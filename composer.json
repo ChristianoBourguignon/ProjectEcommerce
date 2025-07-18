@@ -1,0 +1,23 @@
+{
+    "name": "project/app",
+    "version": "1.0",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Christiano Bourguignon",
+            "email": "christianombl@gmail.com"
+        }
+    ],
+    "require": {
+        "league/plates": "^3.6",
+        "ext-pdo": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1"
+    }
+}
