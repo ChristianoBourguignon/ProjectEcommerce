@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Controllers;
-
-class httpInvalidException
+namespace App\Exceptions;
+use RuntimeException;
+class httpInvalidException extends RuntimeException
 {
-
-    /**
-     * @param string $string
-     */
-    public function __construct(string $string)
+    public function __construct(string $message)
     {
+        parent::__construct($message);
     }
 }

@@ -31,13 +31,22 @@ $router = [
         "/" => function () {
             return load("HomeController", "index");
         },
+        "/produtos" => function () {
+            return load("ProductsController", "index");
+        },
+        "/deslogar" => function () {
+            return load("AuthController", "deslogar");
+        },
     ],
     "POST" => [
         "/logar" => function () {
-            return load("authController", "logar");
+            return load("AuthController", "logar");
         },
-        "/criarConta" => function (){
-            return load("authController","criarConta");
+        "/register" => function (){
+            return load("AuthController","createAccount");
         },
+        "/criarProduto" => function (){
+            return load("ProductsController", "criarProduto");
+        }
     ],
 ];

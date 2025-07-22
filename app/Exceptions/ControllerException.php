@@ -1,9 +1,9 @@
 <?php
-namespace app\Exceptions;
+namespace App\Exceptions;
 
 use RuntimeException;
 
-class ControllerException extends RuntimeException
+class controllerException extends RuntimeException
 {
     public function __construct(string $message)
     {

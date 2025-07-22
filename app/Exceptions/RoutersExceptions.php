@@ -3,7 +3,7 @@
 namespace App\Exceptions;
 use RuntimeException;
 
-class RoutersExceptions extends RuntimeException
+class routersExceptions extends RuntimeException
 {
     public function __construct(string $message)
     {

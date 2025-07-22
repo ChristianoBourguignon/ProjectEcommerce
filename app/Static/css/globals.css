@@ -1,0 +1,19 @@
+.navbar-logo {
+    max-height: 48px;
+    height: auto;
+    width: auto;
+}
+.offcanvas-logo {
+    max-height: 36px;
+    height: auto;
+    width: auto;
+}
+.navbar.shadow-sm {
+    box-shadow: 0 2px 6px rgba(0,0,0,.08) !important;
+}
+body {
+    padding-top: 72px;
+}
+.full-height {
+    height: 90vh;
+}

@@ -16,11 +16,13 @@ services:
     image: mysql:8.0
     container_name: mysql_db
     restart: always
+    ports:
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DATABASE: project_php
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: "admin"
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql          # Persistência dos dados
 
@@ -30,6 +32,9 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: ""
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
     ports:
       - "8080:80"                         # Acesso via localhost:8080
 

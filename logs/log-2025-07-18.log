@@ -1,0 +1,17 @@
+
+2025-07-18 11:56:19- 404 - Erro ao acessar a view:  
+ App\Exceptions\ViewsControllerException: A view home não existe in /var/www/html/app/Controllers/Controller.php:20
+Stack trace:
+#0 /var/www/html/app/controllers/HomeController.php(9): App\Controllers\Controller::view('home')
+#1 /var/www/html/app/Routers/router.php(23): App\Controllers\HomeController->index(Object(stdClass))
+#2 /var/www/html/app/Routers/router.php(32): App\Exceptions\load('HomeController', 'index')
+#3 /var/www/html/index.php(24): App\Exceptions\{closure}()
+#4 {main}
+2025-07-18 17:54:04- 404 - Erro ao acessar a view:  
+ App\Exceptions\viewsControllerException: A view home não existe in /var/www/html/app/Controllers/Controller.php:20
+Stack trace:
+#0 /var/www/html/app/controllers/HomeController.php(9): App\Controllers\Controller::view('home')
+#1 /var/www/html/App/Routers/router.php(23): App\Controllers\HomeController->index(Object(stdClass))
+#2 /var/www/html/App/Routers/router.php(32): App\Exceptions\load('HomeController', 'index')
+#3 /var/www/html/index.php(30): App\Exceptions\{closure}()
+#4 {main}

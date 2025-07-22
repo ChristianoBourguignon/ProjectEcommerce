@@ -1,0 +1,243 @@
+
+2025-07-22 02:34:36- 404 - Erro ao acessar a rota:  
+ App\Exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-22 02:36:33- 404 - Erro ao acessar a rota:  
+ App\Exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-22 03:13:56- 404 - Erro ao acessar a rota:  
+ App\Exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-22 03:14:28- 404 - Erro ao acessar a rota:  
+ App\Exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-22 03:15:46- 404 - Erro ao acessar a rota:  
+ App\Exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:29
+Stack trace:
+#0 {main}
+2025-07-22 03:16:16- 404 - Erro ao acessar a rota:  
+ App\Exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-22 03:43:48- 400 - Erro ao conectar ao banco de dados:  
+ PDOException: could not find driver in /var/www/html/app/Controllers/DbController.php:44
+Stack trace:
+#0 /var/www/html/app/Controllers/DbController.php(44): PDO->__construct('mysql:host=db;p...', 'admin', Object(SensitiveParameterValue), Array)
+#1 /var/www/html/app/controllers/ProductsController.php(23): App\Controllers\DbController::getConnection()
+#2 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#6 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#7 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#8 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#9 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#10 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#11 {main}
+2025-07-22 03:50:25- 404 - Erro ao conectar ao banco de dados:  
+ PDOException: could not find driver in /var/www/html/app/Controllers/DbController.php:44
+Stack trace:
+#0 /var/www/html/app/Controllers/DbController.php(44): PDO->__construct('mysql:host=db;p...', 'admin', Object(SensitiveParameterValue), Array)
+#1 /var/www/html/app/controllers/ProductsController.php(23): App\Controllers\DbController::getConnection()
+#2 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#6 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#7 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#8 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#9 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#10 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#11 {main}
+2025-07-22 03:50:27- 404 - Erro ao conectar ao banco de dados:  
+ PDOException: could not find driver in /var/www/html/app/Controllers/DbController.php:44
+Stack trace:
+#0 /var/www/html/app/Controllers/DbController.php(44): PDO->__construct('mysql:host=db;p...', 'admin', Object(SensitiveParameterValue), Array)
+#1 /var/www/html/app/controllers/ProductsController.php(23): App\Controllers\DbController::getConnection()
+#2 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#6 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#7 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#8 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#9 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#10 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#11 {main}
+2025-07-22 03:51:34- 404 - Erro ao conectar ao banco de dados:  
+ PDOException: could not find driver in /var/www/html/app/Controllers/DbController.php:45
+Stack trace:
+#0 /var/www/html/app/Controllers/DbController.php(45): PDO->__construct('mysql:host=db;p...', 'admin', Object(SensitiveParameterValue), Array)
+#1 /var/www/html/app/controllers/ProductsController.php(23): App\Controllers\DbController::getConnection()
+#2 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#6 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#7 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#8 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#9 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#10 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#11 {main}
+2025-07-22 03:51:36- 404 - Erro ao conectar ao banco de dados:  
+ PDOException: could not find driver in /var/www/html/app/Controllers/DbController.php:45
+Stack trace:
+#0 /var/www/html/app/Controllers/DbController.php(45): PDO->__construct('mysql:host=db;p...', 'admin', Object(SensitiveParameterValue), Array)
+#1 /var/www/html/app/controllers/ProductsController.php(23): App\Controllers\DbController::getConnection()
+#2 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#6 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#7 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#8 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#9 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#10 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#11 {main}
+2025-07-22 03:52:47- 404 - Erro ao conectar ao banco de dados:  
+ PDOException: could not find driver in /var/www/html/app/Controllers/DbController.php:43
+Stack trace:
+#0 /var/www/html/app/Controllers/DbController.php(43): PDO->__construct('mysql:host=db;p...', 'admin', Object(SensitiveParameterValue), Array)
+#1 /var/www/html/app/controllers/ProductsController.php(23): App\Controllers\DbController::getConnection()
+#2 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#6 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#7 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#8 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#9 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#10 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#11 {main}
+2025-07-22 04:22:54- 404 - Erro ao conectar ao banco de dados:  
+ PDOException: SQLSTATE[HY000]: General error: 1824 Failed to open the referenced table 'cupons' in /var/www/html/app/Controllers/DbController.php:126
+Stack trace:
+#0 /var/www/html/app/Controllers/DbController.php(126): PDO->exec('\r\n        CREAT...')
+#1 /var/www/html/app/Controllers/DbController.php(51): App\Controllers\DbController::createTables(Object(PDO))
+#2 /var/www/html/app/controllers/ProductsController.php(23): App\Controllers\DbController::getConnection()
+#3 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#6 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#7 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#8 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#9 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#10 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#11 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#12 {main}
+2025-07-22 04:23:24- 404 - Erro ao obter os produtos:  
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'image' in 'field list' in /var/www/html/app/controllers/ProductsController.php:27
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(27): PDOStatement->execute()
+#1 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#2 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#5 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#6 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#7 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#8 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#9 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#10 {main}
+2025-07-22 04:24:14- 404 - Erro ao obter os produtos:  
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'image' in 'field list' in /var/www/html/app/controllers/ProductsController.php:27
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(27): PDOStatement->execute()
+#1 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#2 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#5 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#6 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#7 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#8 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#9 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#10 {main}
+2025-07-22 04:27:33- 404 - Erro ao obter os produtos:  
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'image' in 'field list' in /var/www/html/app/controllers/ProductsController.php:27
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(27): PDOStatement->execute()
+#1 /var/www/html/app/Views/products.php(14): App\Controllers\ProductsController::getProdutos()
+#2 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#5 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#6 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#7 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#8 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#9 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#10 {main}
+2025-07-22 04:30:09- 404 - Erro ao obter os produtos:  
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'image' in 'field list' in /var/www/html/app/controllers/ProductsController.php:27
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(27): PDOStatement->execute()
+#1 /var/www/html/app/Views/products.php(16): App\Controllers\ProductsController::getProdutos()
+#2 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#3 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#4 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#5 /var/www/html/app/Controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#6 /var/www/html/app/controllers/ProductsController.php(15): App\Controllers\Controller::view('products')
+#7 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController->index(Object(stdClass))
+#8 /var/www/html/App/Routers/router.php(35): App\Exceptions\load('ProductsControl...', 'index')
+#9 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#10 {main}
+2025-07-22 05:00:01- 404 - Erro ao acessar a rota:  
+ App\Exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-22 05:00:56- 404 - Erro ao acessar a rota:  
+ App\Exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-22 05:01:42- 404 - Erro ao criar o produto:  
+ PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'project_php.produtos' doesn't exist in /var/www/html/app/controllers/ProductsController.php:79
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(79): PDOStatement->execute(Array)
+#1 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController::criarProduto(Object(stdClass))
+#2 /var/www/html/App/Routers/router.php(49): App\Exceptions\load('ProductsControl...', 'criarProduto')
+#3 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#4 {main}
+2025-07-22 05:04:51- 404 - Erro ao criar o produto:  
+ PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /var/www/html/app/controllers/ProductsController.php:82
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(82): PDOStatement->execute()
+#1 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController::criarProduto(Object(stdClass))
+#2 /var/www/html/App/Routers/router.php(49): App\Exceptions\load('ProductsControl...', 'criarProduto')
+#3 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#4 {main}
+2025-07-22 05:05:21- 404 - Erro ao criar o produto:  
+ PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /var/www/html/app/controllers/ProductsController.php:83
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(83): PDOStatement->execute()
+#1 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController::criarProduto(Object(stdClass))
+#2 /var/www/html/App/Routers/router.php(49): App\Exceptions\load('ProductsControl...', 'criarProduto')
+#3 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#4 {main}
+2025-07-22 05:11:01- 404 - Erro ao criar o produto:  
+ PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /var/www/html/app/controllers/ProductsController.php:95
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(95): PDOStatement->execute()
+#1 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController::criarProduto(Object(stdClass))
+#2 /var/www/html/App/Routers/router.php(49): App\Exceptions\load('ProductsControl...', 'criarProduto')
+#3 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#4 {main}
+2025-07-22 05:11:33- 404 - Erro ao criar o produto:  
+ PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /var/www/html/app/controllers/ProductsController.php:95
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(95): PDOStatement->execute()
+#1 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController::criarProduto(Object(stdClass))
+#2 /var/www/html/App/Routers/router.php(49): App\Exceptions\load('ProductsControl...', 'criarProduto')
+#3 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#4 {main}
+2025-07-22 05:13:34- 404 - Erro ao criar o produto:  
+ PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /var/www/html/app/controllers/ProductsController.php:89
+Stack trace:
+#0 /var/www/html/app/controllers/ProductsController.php(89): PDOStatement->execute()
+#1 /var/www/html/App/Routers/router.php(23): App\Controllers\ProductsController::criarProduto(Object(stdClass))
+#2 /var/www/html/App/Routers/router.php(49): App\Exceptions\load('ProductsControl...', 'criarProduto')
+#3 /var/www/html/index.php(32): App\Exceptions\{closure}()
+#4 {main}
