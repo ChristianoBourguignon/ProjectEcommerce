@@ -1,5 +1,5 @@
 <?php
-namespace App\Exceptions;
+namespace App\exceptions;
 use RuntimeException;
 
 class usersExceptions extends RuntimeException

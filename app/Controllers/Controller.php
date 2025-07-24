@@ -1,8 +1,8 @@
 <?php
-namespace App\Controllers;
+namespace App\controllers;
 
-use App\Exceptions\exceptionCustom;
-use App\Exceptions\viewsControllerException;
+use App\exceptions\exceptionCustom;
+use App\exceptions\viewsControllerException;
 use League\Plates\Engine;
 
 class Controller
@@ -14,7 +14,7 @@ class Controller
     public static function view(string $view, array $data = []): void
     {
         try {
-            $viewsPath = dirname(__DIR__) . "/Views";
+            $viewsPath = dirname(__DIR__) . "/views";
 
             if (!file_exists($viewsPath . DIRECTORY_SEPARATOR . $view . ".php")) {
                 throw new viewsControllerException("A view {$view} não existe");

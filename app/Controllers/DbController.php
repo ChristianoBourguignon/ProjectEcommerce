@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Controllers;
-use App\Exceptions\exceptionCustom;
+namespace App\controllers;
+use App\exceptions\exceptionCustom;
 use PDO;
 use PDOException;
 
@@ -59,16 +59,16 @@ class DbController
     {
     $sqlUsers = '
         CREATE TABLE IF NOT EXISTS users (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(100) NOT NULL,
-        email VARCHAR(150) UNIQUE NOT NULL,
-        password VARCHAR(255) NOT NULL
+        id_user INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(150) NOT NULL UNIQUE,
+        email varchar(150) NOT NULL,
+        cpf varchar(11) NOT NULL UNIQUE
     );
     ';
 
     $sqlProducts = '
         CREATE TABLE IF NOT EXISTS products (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        id_products INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(150) NOT NULL,
         price DECIMAL(10, 2) NOT NULL,
         image VARCHAR(150) NOT NULL,
@@ -77,48 +77,49 @@ class DbController
     ';
 
     $sqlStock = '
-        CREATE TABLE IF NOT EXISTS estoque (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        CREATE TABLE IF NOT EXISTS stock (
+        id_stock INT AUTO_INCREMENT PRIMARY KEY,
         product_id INT NOT NULL,
         quantity INT DEFAULT 0,
         update_in DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+        FOREIGN KEY (product_id) REFERENCES products(id_products)  ON DELETE CASCADE
     );
     ';
 
-    $sqlOrders = "
-        CREATE TABLE IF NOT EXISTS orders (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        user_id INT NOT NULL,
-        cupom_id INT DEFAULT NULL,
-        total_price DECIMAL(10, 2) NOT NULL,
-        status ENUM('PENDENTE', 'PAGO', 'CANCELADO') DEFAULT 'PENDENTE',
-        order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (cupom_id) REFERENCES cupons(id)
-    );
-    ";
-
-    $sqlOrderItems = '
-    CREATE TABLE IF NOT EXISTS items_order (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        order_id INT NOT NULL,
-        product_id INT NOT NULL,
-        quantity INT NOT NULL,
-        unit_price DECIMAL(10, 2) NOT NULL,
-        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
-        FOREIGN KEY (product_id) REFERENCES products(id)
-    );
-    ';
     $sqlCupons = '
     CREATE TABLE IF NOT EXISTS cupons (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        id_cupom INT AUTO_INCREMENT PRIMARY KEY,
         code VARCHAR(50) NOT NULL UNIQUE,
         discount_percent DECIMAL(5,2) DEFAULT NULL,
         discount_value DECIMAL(10,2) DEFAULT NULL,
         active TINYINT(1) NOT NULL DEFAULT 1,
         expires_at DATETIME DEFAULT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+    ';
+
+    $sqlOrders = "
+        CREATE TABLE IF NOT EXISTS orders (
+        id_orders INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        cupom_id INT DEFAULT NULL,
+        total_price DECIMAL(10, 2) NOT NULL,
+        status ENUM('PENDENTE', 'PAGO', 'CANCELADO') DEFAULT 'PENDENTE',
+        order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (cupom_id) REFERENCES cupons(id_cupom),
+        FOREIGN KEY (user_id) REFERENCES users(id_user)                                          
+    );
+    ";
+
+    $sqlOrderItems = '
+        CREATE TABLE IF NOT EXISTS items_order (
+        id_orderitems INT AUTO_INCREMENT PRIMARY KEY,
+        order_id INT NOT NULL,
+        product_id INT NOT NULL,
+        quantity INT NOT NULL,
+        unit_price DECIMAL(10, 2) NOT NULL,
+        FOREIGN KEY (order_id) REFERENCES orders(id_orders) ON DELETE CASCADE,
+        FOREIGN KEY (product_id) REFERENCES products(id_products)
     );
     ';
         $pdo->exec($sqlUsers);

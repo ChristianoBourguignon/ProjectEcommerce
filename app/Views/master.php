@@ -10,7 +10,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $username = $_SESSION['usuario_nome'] ?? "";
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,15 +28,15 @@ $username = $_SESSION['usuario_nome'] ?? "";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- CSS GLOBALS -->
-    <link href="/App/Static/css/globals.css" rel="stylesheet">
+    <link href="/App/static/css/globals.css" rel="stylesheet">
 </head>
 <body>
-<?php include_once dirname(__DIR__). "/Models/Navbar.php"; ?>
+<?php include_once dirname(__DIR__) . "/models/navbar.php"; ?>
 
 <?= $this->section('body') ?>
 
 <?php
-require_once ("app/models/modalPerfil.php");
+require_once("app/models/modalPerfil.php");
 if ($username != "") {
     include_once("app/models/modalCadastrarProdutos.php");
     include_once("app/models/modalAlterarProduto.php");

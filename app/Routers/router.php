@@ -1,5 +1,5 @@
 <?php
-namespace App\Exceptions;
+namespace App\exceptions;
 
 /**
  * @throws ExceptionCustom
@@ -47,6 +47,9 @@ $router = [
         },
         "/criarProduto" => function (){
             return load("ProductsController", "criarProduto");
+        },
+        "/excluirProduto" => function(){
+            return load("ProductsController", "excluirProduto");
         }
     ],
 ];

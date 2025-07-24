@@ -12,17 +12,20 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <input type="hidden" class="form-control" readonly id="id" name="id" required/>
-
                         <label for="nome" class="form-label">Nome do Produto</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required/>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
                     </div>
                     <div class="mb-3">
-                        <label for="descricao" class="form-label">Descrição</label>
-                        <input class="form-control" id="descricao" name="descricao" required/>
+                        <label for="preco" class="form-label">Preço</label>
+                        <input type="number" class="form-control" id="preco" name="preco" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="estoque" class="form-label">Estoque</label>
+                        <input type="number" class="form-control" id="estoque" name="estoque" required>
                     </div>
                     <div class="mb-3">
                         <label for="imagem" class="form-label">Imagem do Produto</label>
-                        <input class="form-control" type="file" id="imagem" name="imagem" accept="image/*">
+                        <input class="form-control" type="file" id="imagem" name="imagem" accept="image/*" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -40,13 +43,12 @@
 
                 const id = button.getAttribute('data-id');
                 const nome = button.getAttribute('data-nome');
-                const descricao = button.getAttribute('data-descricao');
-                const categoria = button.getAttribute('data-categoria');
-
+                const preco = button.getAttribute('data-preco');
+                const estoque = button.getAttribute('data-estoque');
                 modal.querySelector('#id').value = id;
                 modal.querySelector('#nome').value = nome;
-                modal.querySelector('#descricao').value = descricao;
-                modal.querySelector('#categoria').value = categoria;
+                modal.querySelector('#preco').value = preco;
+                modal.querySelector('#estoque').value = estoque;
             });
         });
     </script>

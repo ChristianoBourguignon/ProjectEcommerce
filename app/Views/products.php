@@ -1,45 +1,60 @@
 <?php
 
 namespace app\controllers;
-use App\Exceptions\exceptionCustom;
 use League\Plates;
 
 /** @var Plates\Template\Template $this */
 $this->layout("master", [
     'title' => "Produtos",
-    'description' => "Aqui você encontrará todos os produtos disponível para realizar uma troca, tendo total liberdade de escolha."
+    'description' => "Aqui você encontrará todos os produtos disponível."
 ]);
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 }
-$produtos = ProductsController::getProdutos() ?? null;
-$username = $_SESSION['username'];
+$produtos = ProductsController::getProdutos() ?? NULL;
+$username = $_SESSION['username'] ?? NULL;
 
 ?>
-    <?php $this->start('body'); ?>
+    <?php $this->start('body');?>
 
     <main class="container my-5">
 
         <section class="produtos-categoria">
             <h3>Todos os Itens</h3>
-            <div class="produtos-lista">
+            <div class="d-flex">
                 <?php if ($produtos): ?>
                     <?php foreach ($produtos as $produto): ?>
-                        <div class="product" style="position: relative; width: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 10px; transition: all 0.3s; text-align: center; overflow: visible; z-index: 1; background-color: #fff;">
-                            <img src="<?= htmlspecialchars($produto['image']) ?>"  class="img-prod" alt="<?= htmlspecialchars($produto['nome']) ?>">
-                            <p class="condition font-monospace"><?= htmlspecialchars($produto['fk_categoria']) ?></p>
-                            <p class="product-name" style="font-weight: bold; margin-top: 10px;"><?= htmlspecialchars($produto['nome']) ?></p>
-                            <p class="condition"><?= htmlspecialchars($produto['descricao']) ?></p>
-                            <a href="#modalTrocarProduto"
-                               class="btn-trocar"
-                               data-bs-toggle="modal"
-                               data-bs-target="#modalTrocarProduto"
-                               data-id="<?= $produto['id'] ?>"
-                               data-nome="<?= htmlspecialchars($produto['nome']) ?>"
-                               data-descricao="<?= htmlspecialchars($produto['descricao']) ?>"
-                               data-imagem="<?= htmlspecialchars($produto['image']) ?>"
-                               data-categoria =<?= htmlspecialchars($produto['fk_categoria']) ?>
-                            >
+                        <div class="product m-1">
+                            <img src="<?= htmlspecialchars($produto['image']) ?>"  class="img-prod" alt="<?= htmlspecialchars($produto['name']) ?>">
+                            <p class="product-name" style="font-weight: bold; margin-top: 10px;"><?= htmlspecialchars($produto['name']) ?></p>
+                            <p class="condition font-monospace"><?= "R$" . number_format($produto['price'],2) ?></p>
+                            <?php if($username): ?>
+                            <div class="dropdown dropdown-btn" style="position: absolute; top: 10px; left: 10px;">
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    :
+                                </button>
+                                <ul class="dropdown-menu" style="position: absolute;">
+                                    <a href="#alterarProdutoModal"
+                                       class="dropdown-item btn-editar-produto"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#alterarProdutoModal"
+                                       data-id="<?= $produto['id'] ?>"
+                                       data-nome="<?= htmlspecialchars($produto['name']) ?>"
+                                       data-preco="<?= htmlspecialchars($produto['price']) ?>"
+                                       data-estoque="<?= htmlspecialchars($produto['quantity']) ?>"
+                                    >
+                                        Alterar
+                                    </a>
+                                    <li>
+                                        <form action="/excluirProduto" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este produto?')" style="margin: 0;">
+                                            <input type="hidden" name="product_id" value="<?= $produto['id'] ?>">
+                                            <button type="submit" class="dropdown-item text-danger" style="background: none; border: none;">Excluir</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                            <?php endif; ?>
+                            <a href="#" class="btn btn-primary w-100 mt-3">
                                 Comprar
                             </a>
                         </div>

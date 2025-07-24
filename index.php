@@ -1,12 +1,12 @@
 <?php
-namespace App\Exceptions;
+namespace App\exceptions;
 
-use App\Controllers\DbController;
+use App\controllers\DbController;
 use Dotenv\Dotenv;
-use App\Exceptions\exceptionCustom;
+use App\exceptions\exceptionCustom;
 
 require_once "vendor/autoload.php";
-require_once "App/Routers/router.php";
+require_once "App/routers/router.php";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

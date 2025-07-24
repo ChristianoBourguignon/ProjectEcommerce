@@ -1,0 +1,61 @@
+
+2025-07-24 13:41:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 13:41:23- 404 - Erro ao conectar ao banco de dados:  
+ PDOException: SQLSTATE[HY000]: General error: 3734 Failed to add the foreign key constraint. Missing column 'id' for constraint 'stock_ibfk_1' in the referenced table 'products' in /var/www/html/app/controllers/DbController.php:115
+Stack trace:
+#0 /var/www/html/app/controllers/DbController.php(115): PDO->exec('\r\n        CREAT...')
+#1 /var/www/html/app/controllers/DbController.php(51): App\controllers\DbController::createTables(Object(PDO))
+#2 /var/www/html/app/controllers/ProductsController.php(29): App\controllers\DbController::getConnection()
+#3 /var/www/html/app/views/products.php(14): App\controllers\ProductsController::getProdutos()
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#6 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#7 /var/www/html/app/controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#8 /var/www/html/app/controllers/ProductsController.php(21): App\controllers\Controller::view('products')
+#9 /var/www/html/App/routers/router.php(23): App\controllers\ProductsController->index(Object(stdClass))
+#10 /var/www/html/App/routers/router.php(35): App\exceptions\load('ProductsControl...', 'index')
+#11 /var/www/html/index.php(32): App\exceptions\{closure}()
+#12 {main}
+2025-07-24 13:41:23- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 13:43:01- 404 - Erro ao conectar ao banco de dados:  
+ PDOException: SQLSTATE[HY000]: General error: 3734 Failed to add the foreign key constraint. Missing column 'id' for constraint 'stock_ibfk_1' in the referenced table 'products' in /var/www/html/app/controllers/DbController.php:115
+Stack trace:
+#0 /var/www/html/app/controllers/DbController.php(115): PDO->exec('\r\n        CREAT...')
+#1 /var/www/html/app/controllers/DbController.php(51): App\controllers\DbController::createTables(Object(PDO))
+#2 /var/www/html/app/controllers/ProductsController.php(29): App\controllers\DbController::getConnection()
+#3 /var/www/html/app/views/products.php(14): App\controllers\ProductsController::getProdutos()
+#4 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#5 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#6 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#7 /var/www/html/app/controllers/Controller.php(24): League\Plates\Engine->render('products', Array)
+#8 /var/www/html/app/controllers/ProductsController.php(21): App\controllers\Controller::view('products')
+#9 /var/www/html/App/routers/router.php(23): App\controllers\ProductsController->index(Object(stdClass))
+#10 /var/www/html/App/routers/router.php(35): App\exceptions\load('ProductsControl...', 'index')
+#11 /var/www/html/index.php(32): App\exceptions\{closure}()
+#12 {main}
+2025-07-24 13:43:01- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 13:44:55- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 13:45:20- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 14:46:24- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 14:51:55- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}

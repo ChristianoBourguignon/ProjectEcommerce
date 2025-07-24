@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\controllers;
 
-use App\Exceptions\exceptionCustom;
-use App\Exceptions\invalidArgumentsForProductsException;
+use App\exceptions\exceptionCustom;
+use App\exceptions\invalidArgumentsForProductsException;
 use PDO;
+use PDOException;
 
 class ProductsController
 {
@@ -28,9 +29,18 @@ class ProductsController
         DbController::getConnection();
         try {
             $pdo = DbController::getPdo();
-            $stmt = $pdo->prepare("Select name,price,image from products");
+            $stmt = $pdo->prepare("
+                SELECT
+                p.id_products,
+                p.name,
+                p.price,
+                p.image,
+                e.quantity
+                FROM products p
+                INNER JOIN stock e ON p.id_products = e.product_id;
+            ");
             $stmt->execute();
-            /** @var array<int, array{name: string, price: float, image: string}> $produtos */
+            /** @var array<int, array{id: int,name: string, price: float, image: string, quantity:int}> $produtos */
             $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $produtos;
         } catch (\PDOException $ex){
@@ -79,28 +89,52 @@ class ProductsController
             $stmt = DbController::getPdo()->prepare($sql);
             $stmt->execute([$prodNome, $prodPreco, $image]);
             $prodId = DbController::getPdo()->lastInsertId();
-            $sql = "SELECT id FROM products WHERE id = :prodId";
+            $sql = "INSERT INTO stock (product_id, quantity) VALUES (?, ?)";
             $stmt = DbController::getPdo()->prepare($sql);
-            $stmt->bindParam(':prodId', $prodId);
-            $stmt->execute();
-            $sql = "INSERT INTO estoque (product_id, quantity) VALUES (?, ?)";
-            $stmt = DbController::getPdo()->prepare($sql);
-            $stmt->bindParam(':prodName', $prodId);
-            $stmt->execute();
+            $stmt->execute([$prodId, $prodEstoque]);
 
-            $_SESSION['modal'] = [
-                'msg' => "Produto: $prodName cadastrado com sucesso!",
-                'statuscode' => 200
-            ];
             http_response_code(200);
             header("Location: /produtos");
             exit;
         } catch (\PDOException | invalidArgumentsForProductsException $ex){
-            $_SESSION['modal'] = [
-                'msg' => "Erro ao cadastrar o Produto $prodNome: " . $ex->getMessage(),
-                'statuscode' => 404
-            ];
             throw new exceptionCustom("Erro ao criar o produto: ", 404, $ex);
+        }
+    }
+
+    /**
+     * @throws exceptionCustom
+     */
+    public function excluirProduto(): void
+    {
+        dbController::getConnection();
+        $id = filter_input(INPUT_POST, 'product_id', FILTER_SANITIZE_NUMBER_INT);
+
+        try {
+            $stmt = dbController::getPdo()->prepare("SELECT image FROM products WHERE id_products = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            /** @var array<string, array{image: string}> $prod */
+            $prod = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (isset($prod['image'])) {
+                $caminhoRelativo = str_replace('/', DIRECTORY_SEPARATOR, $prod['image']);
+
+                /** @var string $caminhoAbsoluto */
+                $caminhoAbsoluto = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . $caminhoRelativo;
+                if (file_exists($caminhoAbsoluto)) {
+                    unlink($caminhoAbsoluto);
+                }
+            }
+            $stmt = dbController::getPdo()->prepare("DELETE FROM stock WHERE product_id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $stmt = dbController::getPdo()->prepare("DELETE FROM products WHERE id_products = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            http_response_code(200);
+            header("Location: /produtos");
+        } catch (PDOException $ex) {
+            new exceptionCustom("Erro ao deletar o produto: ", 404, $ex);
         }
     }
 }

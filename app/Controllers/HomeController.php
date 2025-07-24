@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\controllers;
 
-use App\Exceptions\exceptionCustom;
+use App\exceptions\exceptionCustom;
 
 class HomeController
 {

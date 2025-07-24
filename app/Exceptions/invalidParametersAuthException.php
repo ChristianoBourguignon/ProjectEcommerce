@@ -1,14 +1,13 @@
 <?php
+namespace App\exceptions;
 
-namespace App\controllers;
+use RuntimeException;
 
-class invalidParametersAuthException
+class invalidParametersAuthException extends RuntimeException
 {
-
-    /**
-     * @param string $string
-     */
-    public function __construct(string $string)
+    public function __construct(string $message)
     {
+        parent::__construct($message);
     }
 }
+

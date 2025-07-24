@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace App\exceptions;
 use RuntimeException;
 class httpInvalidException extends RuntimeException
 {
