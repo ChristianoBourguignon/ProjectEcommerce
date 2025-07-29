@@ -11,6 +11,8 @@ services:
       - "8000:80"
     depends_on:
       - db
+    networks:
+      - backend
 
   db:
     image: mysql:8.0
@@ -25,6 +27,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql          # Persistência dos dados
+    networks:
+      - backend
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -37,7 +41,14 @@ services:
       DB_PASS: ${DB_PASS}
     ports:
       - "8080:80"                         # Acesso via localhost:8080
+    networks:
+      - backend
 
 volumes:
   mysql_data:
+    name: projectecommerce_mysql_data
   composer_cache:
+
+networks:
+  backend:
+    name: projectphp_network
