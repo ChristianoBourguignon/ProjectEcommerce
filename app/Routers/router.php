@@ -52,7 +52,7 @@ $router = [
             return load("ProductsController", "excluirProduto");
         },
         "/finalizarCompra" => function(){
-            return load("OrdersControllers","finalizarCompra");
+            return load("OrdersController","finalizarCompra");
         }
     ],
 ];

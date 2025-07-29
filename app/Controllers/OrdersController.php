@@ -8,7 +8,7 @@ use Exception;
 use PDO;
 use PDOException;
 
-class OrdersControllers
+class OrdersController
 {
     /**
      * @throws exceptionCustom
@@ -31,7 +31,7 @@ class OrdersControllers
             $ids_separados = implode(',', array_fill(0, count($ids), '?'));
             if (empty($ids)) {
                 echo json_encode(["Erro: "=>$ids_separados]);
-                throw new exceptionCustom("Erro ao criar o pedido: ", 404, new ordersFinishException("Nenhum produto no carrinho para buscar."));
+                throw new ordersFinishException("Nenhum produto no carrinho para buscar.");
             }
             $sql = "
                 SELECT p.id_products, p.name, p.price, s.quantity as stock
@@ -81,6 +81,9 @@ class OrdersControllers
         }catch (PDOException $ex){
             echo json_encode(["code"=>404,"messages"=>"Erro ao finalizar a compra."]);
             throw new exceptionCustom("Erro ao finalizar a compra", 404,$ex);
+        }catch (ordersFinishException $ex){
+            echo json_encode(["code"=>404,"messages"=>"Erro ao obter os ids: $ex"]);
+            throw new exceptionCustom("Erro ao obter os ids: ", 404,$ex);
         }
     }
 
@@ -91,12 +94,15 @@ class OrdersControllers
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        $userId = $_SESSION['userid'];
+        $userId = $_SESSION['userid'] ?? null;
         $cupomId = null;
         $status = 'Pendente';
         $orderDate = date('Y-m-d H:i:s');
 
         try {
+            if(empty($userId)){
+                throw new ordersFinishException("Id so usuario está vazio");
+            }
             DbController::getPdo()->beginTransaction();
             $stmtOrder = DbController::getPdo()->prepare("
                 INSERT INTO orders (user_id, cupom_id, total_price, status, order_date) VALUES (?, ?, ?, ?, ?)");
@@ -126,6 +132,10 @@ class OrdersControllers
 
             DbController::getPdo()->commit();
             $this->descontarEstoque($cart);
+        } catch (ordersFinishException $e) {
+            DbController::getPdo()->rollBack();
+            echo json_encode(["code"=>400,"messages"=>"Erro ao obter o id para criar o pedido: $e"]);
+            throw new exceptionCustom("Erro ao obter o id para criar o pedido: ",400,$e);
         } catch (Exception $e) {
             DbController::getPdo()->rollBack();
             echo json_encode(["code"=>400,"messages"=>"Erro ao criar o pedido"]);
@@ -147,23 +157,44 @@ class OrdersControllers
             $stock = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$stock) {
-                throw new exceptionCustom("Erro ao realizar o desconto no estoque:",400,new ordersFinishException("Não foi possível descontar o estoque do produto $product_id."));
+                throw new ordersFinishException("Não foi possível descontar o estoque do produto $product_id.");
             }
 
             $estoqueAtual = intval($stock['quantity']);
             $id_stock = $stock['id_stock'];
 
             if ($estoqueAtual < $quantity) {
-                throw new exceptionCustom("Erro ao realizar o desconto no estoque: ",400,new ordersFinishException("Estoque insuficiente para o produto ID $product_id. Em estoque: $estoqueAtual, solicitado: $quantity"));
+                throw new ordersFinishException("Estoque insuficiente para o produto ID $product_id. Em estoque: $estoqueAtual, solicitado: $quantity");
             }
             $stmtUpdate = DbController::getPdo()->prepare("UPDATE stock SET quantity = quantity - ?, update_in = NOW() WHERE id_stock = ?");
             $stmtUpdate->execute([$quantity, $id_stock]);
             echo json_encode(["code"=>200,"messages"=>"Erro ao criar o pedido"]);
         }
-        } catch (Exception | PDOException $ex){
+        } catch (Exception | PDOException | exceptionCustom $ex){
             echo json_encode(["code"=>400,"messages"=>"Erro ao criar o pedido"]);
             throw new exceptionCustom("Erro ao criar o pedido: ",400,$ex);
         }
+    }
+
+    /**
+     * @throws exceptionCustom
+     */
+    function getPedidosPorUsuario(int $userid): PDO{
+        try {
+            DbController::getConnection();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if(!$userid){
+                throw new ordersFinishException("Não há pedido para este usuario");
+            }
+            $stmt = DbController::getPdo()->prepare("SELECT id_orders,total_price,status,order_date FROM orders WHERE user_id = ?");
+            $stmt->execute([$userid]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex){
+            throw new exceptionCustom("Erro ao obter os pedidos: ", 400,$ex);
+        }
+
     }
 
 

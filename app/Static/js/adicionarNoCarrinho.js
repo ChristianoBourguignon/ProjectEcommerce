@@ -171,7 +171,6 @@ $('#btn-finalizar-compra').on('click', function () {
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
                     </div>`;
                 $('body').prepend(alertHtml);
-                localStorage.setItem('cart', JSON.stringify([]));
             } else {
                 const alertHtml = `
                     <div class="alert alert-error alert-dismissible fade show" role="alert" id="orderFailedAlert">
@@ -180,6 +179,9 @@ $('#btn-finalizar-compra').on('click', function () {
                     </div>`;
                 $('body').prepend(alertHtml);
             }
+            localStorage.setItem('cart', JSON.stringify([]));
+            atualizarContadorCarrinho();
+            renderizarCarrinho();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.error("Erro ao finalizar compra: " + errorThrown);
