@@ -1,14 +1,14 @@
 <?php
 
-namespace App\controllers;
+namespace App\exceptions;
 
-class ordersFinishException
+use RuntimeException;
+
+class ordersFinishException extends RuntimeException
 {
-
-    /**
-     * @param string $string
-     */
-    public function __construct(string $string)
+    public function __construct(string $message)
     {
+        parent::__construct($message);
     }
 }
+

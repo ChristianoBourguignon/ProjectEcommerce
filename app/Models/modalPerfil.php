@@ -27,7 +27,7 @@
                     <div class="tab-pane fade show active p-4" id="login" role="tabpanel">
                         <form action="/logar" method="POST">
                              <div class="mb-3">
-                                <label for="loginCPF" class="form-label">CPF</label>
+                                <label for="loginCpf" class="form-label">CPF</label>
                                 <input type="text" class="form-control" id="loginCpf" name="loginCpf" required>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg shadow animate__animated animate__pulse delay-2s">Entrar</button>
@@ -38,16 +38,16 @@
                         <form id="registerForm" action="/criarConta" method="POST">
                             <div class="mb-3">
                                 <label for="registerName" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="registerName" name="nome" required>
+                                <input type="text" class="form-control" id="registerName" name="registerName" required>
                             </div>
                             <div class="mb-3">
                                 <label for="registerEmail" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="registerEmail" name="email" required>
+                                <input type="email" class="form-control" id="registerEmail" name="registerEmail" required>
                                 <div class="invalid-feedback">Email inválido.</div>
                             </div>
                             <div class="mb-3">
-                                <label for="registerCpf" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="registerCpf" name="cpf" required>
+                                <label for="registerCpf" class="form-label">CPF ( Sem pontuação )</label>
+                                <input type="text" class="form-control" id="registerCpf" name="registerCpf" required>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg shadow animate__animated animate__pulse delay-2s" id="registerBtn" disabled>Cadastrar</button>
                         </form>

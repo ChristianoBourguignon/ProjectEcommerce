@@ -1,0 +1,430 @@
+
+2025-07-29 00:23:24- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4 in /var/www/html/app/controllers/OrdersControllers.php:39
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(39): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:23:46- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:23:46- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:23:48- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4 in /var/www/html/app/controllers/OrdersControllers.php:39
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(39): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:24:47- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:24:47- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:25:05- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4 in /var/www/html/app/controllers/OrdersControllers.php:39
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(39): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:27:08- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:27:08- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:27:11- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4 in /var/www/html/app/controllers/OrdersControllers.php:39
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(39): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:28:13- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:28:13- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:28:16- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4 in /var/www/html/app/controllers/OrdersControllers.php:39
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(39): PDOStatement->execute()
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:30:55- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:31:19- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:31:19- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:32:21- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:32
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:32:39- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:32:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:32:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:32:54- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:33:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:33:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:33:11- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:33:11- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:33:34- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:33:34- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:34:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:34:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:23- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:23- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:32- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:32- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:36:38- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:37:50- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:37:52- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:37:55- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:38:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:38:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:38:11- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:38:27- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:38:27- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:38:29- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:38:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:38:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:38:54- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:39:08- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:39:08- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:39:10- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:33
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:40:44- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:40:44- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:40:47- 404 - Erro ao criar o pedido:  
+ App\exceptions\ordersFinishException: Nenhum produto no carrinho para buscar. in /var/www/html/app/controllers/OrdersControllers.php:40
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-29 00:44:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:44:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:44:09- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.id' in 'field list' in /var/www/html/app/controllers/OrdersControllers.php:50
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(50): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:44:42- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:44:42- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:44:44- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.id' in 'field list' in /var/www/html/app/controllers/OrdersControllers.php:43
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(43): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:45:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:45:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:45:43- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.id' in 'on clause' in /var/www/html/app/controllers/OrdersControllers.php:43
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(43): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:47:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:47:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:47:31- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.id' in 'on clause' in /var/www/html/app/controllers/OrdersControllers.php:43
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(43): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:47:35- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:47:35- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:47:38- 404 - Erro ao finalizar a compra 
+ PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.id' in 'on clause' in /var/www/html/app/controllers/OrdersControllers.php:43
+Stack trace:
+#0 /var/www/html/app/controllers/OrdersControllers.php(43): PDOStatement->execute(Array)
+#1 /var/www/html/App/routers/router.php(23): App\controllers\OrdersControllers->finalizarCompra(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(55): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-29 00:51:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:51:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:52:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:52:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:53:04- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 00:53:04- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:01:59- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:01:59- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:04:02- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:04:02- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:05:39- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:05:39- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:06:01- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:06:01- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:06:21- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:06:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:06:52- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-29 01:06:52- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}

@@ -59,3 +59,696 @@ Stack trace:
  App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
 Stack trace:
 #0 {main}
+2025-07-24 15:00:57- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:02:17- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:02:32- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:09:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:09:34- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:09:45- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:09:45- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:10:32- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:10:58- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:11:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:11:37- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:11:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:12:24- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:12:31- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:12:38- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:23:03- 404 - Erro ao acessar a conta:  
+ App\exceptions\invalidParametersAuthException: Já existe conta com esse CPF in /var/www/html/app/controllers/AuthController.php:34
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\AuthController->criarConta(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(46): App\exceptions\load('AuthController', 'criarConta')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-24 15:23:04- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:23:39- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:23:54- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:24:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:25:31- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:25:35- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:25:41- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:26:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:26:49- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:26:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:27:03- 404 - Erro ao acessar a conta:  
+ PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Chris' for key 'users.name' in /var/www/html/app/controllers/AuthController.php:40
+Stack trace:
+#0 /var/www/html/app/controllers/AuthController.php(40): PDOStatement->execute()
+#1 /var/www/html/App/routers/router.php(23): App\controllers\AuthController->criarConta(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(46): App\exceptions\load('AuthController', 'criarConta')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-24 15:27:04- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:28:05- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:28:16- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:28:48- 404 - Erro ao acessar a conta:  
+ PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '19051540701' for key 'users.cpf' in /var/www/html/app/controllers/AuthController.php:40
+Stack trace:
+#0 /var/www/html/app/controllers/AuthController.php(40): PDOStatement->execute()
+#1 /var/www/html/App/routers/router.php(23): App\controllers\AuthController->criarConta(Object(stdClass))
+#2 /var/www/html/App/routers/router.php(46): App\exceptions\load('AuthController', 'criarConta')
+#3 /var/www/html/index.php(32): App\exceptions\{closure}()
+#4 {main}
+2025-07-24 15:28:49- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:29:23- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:30:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:30:16- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:30:31- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:30:41- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:31:05- 404 - Erro ao acessar a conta:  
+ App\exceptions\invalidParametersAuthException: Já existe conta com esse CPF in /var/www/html/app/controllers/AuthController.php:34
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\AuthController->criarConta(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(46): App\exceptions\load('AuthController', 'criarConta')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-24 15:31:05- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:31:11- 404 - Erro ao acessar a conta:  
+ App\exceptions\invalidParametersAuthException: Já existe conta com esse CPF in /var/www/html/app/controllers/AuthController.php:34
+Stack trace:
+#0 /var/www/html/App/routers/router.php(23): App\controllers\AuthController->criarConta(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(46): App\exceptions\load('AuthController', 'criarConta')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-07-24 15:31:12- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:31:19- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:31:19- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:35:28- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:35:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:35:41- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:35:45- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:36:55- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:37:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:37:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:37:08- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:38:50- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:38:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:43:28- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:44:00- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:44:01- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:44:34- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:45:25- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:46:31- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:46:34- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:46:37- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:47:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:47:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:47:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:50:57- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:51:00- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:51:23- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:51:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:52:03- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:52:12- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 15:53:15- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:02:20- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:03:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:04:12- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:08:16- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:11:47- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:12:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:13:50- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:14:41- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:15:01- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:15:18- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:15:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:15:30- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:15:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:52:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:55:59- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:56:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:56:42- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:58:00- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:58:11- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:58:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 16:59:39- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:00:38- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:11:27- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:11:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:11:36- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:11:54- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:12:11- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:12:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:13:35- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:13:48- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:14:01- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:14:02- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:14:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:15:59- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:16:13- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:16:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:16:55- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:48:38- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:49:01- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:49:14- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:49:35- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:49:46- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 17:50:02- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 18:41:42- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 18:41:48- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 18:41:58- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 18:42:05- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 19:51:48- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 19:51:52- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 19:52:47- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 19:52:47- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:05:08- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:05:08- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:10:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:10:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:11:23- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:11:23- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:12:41- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:12:41- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:13:19- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:13:19- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:14:25- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:14:25- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:20:03- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:20:03- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:21:03- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:21:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:24:32- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:24:32- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:24:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:25:42- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:26:10- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:26:10- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:26:13- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:29:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:29:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:29:07- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:29:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:29:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:29:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:30:52- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:31:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:31:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:31:59- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:31:59- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:32:24- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:32:24- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:34:25- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:34:25- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:46:11- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:46:11- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:47:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:47:16- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:47:16- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:48:04- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:48:52- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:49:45- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-07-24 20:56:22- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}

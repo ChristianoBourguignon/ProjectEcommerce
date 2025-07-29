@@ -2,6 +2,8 @@
 
 namespace App\controllers;
 
+use _PHPStan_5878035a0\Nette\Utils\Json;
+use App\exceptions\addToCartExceptions;
 use App\exceptions\exceptionCustom;
 use App\exceptions\invalidArgumentsForProductsException;
 use PDO;
@@ -37,7 +39,8 @@ class ProductsController
                 p.image,
                 e.quantity
                 FROM products p
-                INNER JOIN stock e ON p.id_products = e.product_id;
+                INNER JOIN stock e ON p.id_products = e.product_id
+                where e.quantity > 0;
             ");
             $stmt->execute();
             /** @var array<int, array{id: int,name: string, price: float, image: string, quantity:int}> $produtos */
@@ -56,9 +59,8 @@ class ProductsController
         DbController::getConnection();
         /** @var string $prodName */
         $prodNome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
-        $prodPreco = filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_NUMBER_FLOAT) ?: '';
+        $prodPreco = (float)filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
         $prodEstoque = filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT) ?: '';
-
         try {
             $image = null;
 
@@ -136,5 +138,40 @@ class ProductsController
         } catch (PDOException $ex) {
             new exceptionCustom("Erro ao deletar o produto: ", 404, $ex);
         }
+    }
+    public function atualizarCarrinho():Json
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        header('Content-Type: application/json');
+
+        $id_product = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT) ?: '';
+        $nome_product = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
+        $preco_product = (float)filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
+        $estoque_product = filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT) ?: 1;
+        $estoque_product_max = filter_input(INPUT_POST, 'max_estoque', FILTER_SANITIZE_NUMBER_INT) ?: 1;
+        $imagem_product = filter_input(INPUT_POST, 'imagem', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
+
+
+        if (!empty($id_product) || !empty($nome_product) || !empty($preco_product) || !empty($estoque_product)) {
+
+            $_SESSION['cart'][$id_product] = [
+                [
+                'id' => (int)$id_product,
+                'name' => $nome_product,
+                'price' => (float)$preco_product,
+                'stock' => (int)$estoque_product,
+                'image' => $imagem_product,
+                'stock_max' => (int)$estoque_product_max
+                ]
+            ];
+            http_response_code(200);
+            echo json_encode(['status' => 'ok', 'mensagem' => 'Produto adicionado no carrinho']);
+        } else {
+            http_response_code(400);
+            echo json_encode(['status' => 'erro', 'mensagem' => 'Dados inválidos ou faltantes.']);
+        }
+        exit;
     }
 }

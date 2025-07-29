@@ -60,7 +60,7 @@ class DbController
     $sqlUsers = '
         CREATE TABLE IF NOT EXISTS users (
         id_user INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(150) NOT NULL UNIQUE,
+        name VARCHAR(150) NOT NULL,
         email varchar(150) NOT NULL,
         cpf varchar(11) NOT NULL UNIQUE
     );

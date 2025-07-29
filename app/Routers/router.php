@@ -42,14 +42,17 @@ $router = [
         "/logar" => function () {
             return load("AuthController", "logar");
         },
-        "/register" => function (){
-            return load("AuthController","createAccount");
+        "/criarConta" => function (){
+            return load("AuthController","criarConta");
         },
         "/criarProduto" => function (){
             return load("ProductsController", "criarProduto");
         },
         "/excluirProduto" => function(){
             return load("ProductsController", "excluirProduto");
+        },
+        "/finalizarCompra" => function(){
+            return load("OrdersControllers","finalizarCompra");
         }
     ],
 ];

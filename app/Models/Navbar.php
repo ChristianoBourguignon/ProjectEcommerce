@@ -36,6 +36,20 @@ $logoSrc = "/App/Static/images/Logo.png";
             </ul>
         </div>
 
+        <!-- Carrinho (desktop) -->
+        <a
+            class="btn btn-outline-primary position-relative me-2 d-none d-lg-inline-flex"
+            href="#carrinhoModal"
+            data-bs-toggle="modal"
+            data-bs-target="#carrinhoModal"
+        >
+            <i class="bi bi-cart"></i>
+            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <span class="visually-hidden">itens no carrinho</span>
+            </span>
+        </a>
+
+
         <!-- Perfil / Login (desktop) -->
         <?php if ($isLoggedIn): ?>
             <div class="dropdown d-none d-lg-block">
@@ -84,6 +98,13 @@ $logoSrc = "/App/Static/images/Logo.png";
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
             </div>
             <div class="offcanvas-body">
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="/carrinho">
+                    <span><i class="bi bi-cart me-2"></i>Carrinho</span>
+                    <?php if ($cartCount > 0): ?>
+                        <span id="cart-count-mobile" class="badge bg-danger rounded-pill"><?= $cartCount ?></span>
+                    <?php endif; ?>
+                </a>
+
                 <?php if ($isLoggedIn): ?>
                     <div class="fw-bold text-center mb-3">
                         Olá, <?= htmlspecialchars($username) ?>
@@ -124,3 +145,5 @@ $logoSrc = "/App/Static/images/Logo.png";
         </div>
     </div>
 </nav>
+<?php require_once("app/models/modalCarrinho.php"); ?>
+
