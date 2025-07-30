@@ -9,7 +9,6 @@ use League\Plates;
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$username = $_SESSION['usuario_nome'] ?? "";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
