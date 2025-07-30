@@ -137,39 +137,4 @@ class ProductsController
             new exceptionCustom("Erro ao deletar o produto: ", 404, $ex);
         }
     }
-    public function atualizarCarrinho():Json
-    {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        header('Content-Type: application/json');
-
-        $id_product = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT) ?: '';
-        $nome_product = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
-        $preco_product = (float)filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
-        $estoque_product = filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT) ?: 1;
-        $estoque_product_max = filter_input(INPUT_POST, 'max_estoque', FILTER_SANITIZE_NUMBER_INT) ?: 1;
-        $imagem_product = filter_input(INPUT_POST, 'imagem', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
-
-
-        if (!empty($id_product) || !empty($nome_product) || !empty($preco_product) || !empty($estoque_product)) {
-
-            $_SESSION['cart'][$id_product] = [
-                [
-                'id' => (int)$id_product,
-                'name' => $nome_product,
-                'price' => (float)$preco_product,
-                'stock' => (int)$estoque_product,
-                'image' => $imagem_product,
-                'stock_max' => (int)$estoque_product_max
-                ]
-            ];
-            http_response_code(200);
-            echo json_encode(['status' => 'ok', 'mensagem' => 'Produto adicionado no carrinho']);
-        } else {
-            http_response_code(400);
-            echo json_encode(['status' => 'erro', 'mensagem' => 'Dados inválidos ou faltantes.']);
-        }
-        exit;
-    }
 }

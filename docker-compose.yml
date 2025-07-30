@@ -35,12 +35,12 @@ services:
     container_name: phpmyadmin
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ROOT_PASSWORD: "root"
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
     ports:
-      - "8080:80"                         # Acesso via localhost:8080
+      - "8080:80"
     networks:
       - backend
 
