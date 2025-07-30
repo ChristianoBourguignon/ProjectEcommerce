@@ -37,6 +37,12 @@ $router = [
         "/deslogar" => function () {
             return load("AuthController", "deslogar");
         },
+        "/meus-pedidos" => function () {
+            return load("OrdersController",  "index");
+        },
+        "/cupons" => function () {
+            return load("CuponsController", "index");
+        }
     ],
     "POST" => [
         "/logar" => function () {
