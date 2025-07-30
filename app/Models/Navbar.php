@@ -71,6 +71,8 @@ $logoSrc = "/App/Static/images/Logo.png";
                                 data-bs-target="#cadastroProdutosModal"
                         >Cadastrar Produto</a>
                     </li>
+                    <li><a class="dropdown-item" href="/meus-pedidos">Meus pedidos</a></li>
+                    <li><a class="dropdown-item" href="/cupons">Cupons</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item text-danger" href="/deslogar">Sair</a></li>
                 </ul>
@@ -100,9 +102,6 @@ $logoSrc = "/App/Static/images/Logo.png";
             <div class="offcanvas-body">
                 <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="/carrinho">
                     <span><i class="bi bi-cart me-2"></i>Carrinho</span>
-                    <?php if ($cartCount > 0): ?>
-                        <span id="cart-count-mobile" class="badge bg-danger rounded-pill"><?= $cartCount ?></span>
-                    <?php endif; ?>
                 </a>
 
                 <?php if ($isLoggedIn): ?>
@@ -116,8 +115,8 @@ $logoSrc = "/App/Static/images/Logo.png";
                         <a class="list-group-item list-group-item-action" href="/sobre">Sobre nós</a>
 
                         <div class="list-group-item disabled small text-uppercase mt-3">Minha Conta</div>
-                        <a class="list-group-item list-group-item-action" href="/inventario">Meu Inventário</a>
-                        <a class="list-group-item list-group-item-action" href="/trocas">Minhas Trocas</a>
+                        <a class="list-group-item list-group-item-action" href="/meus-pedidos">Meus pedidos</a>
+                        <a class="list-group-item list-group-item-action" href="/cupons">Cupons</a>
                         <a
                                 class="list-group-item list-group-item-action"
                                 href="#cadastroProdutosModal"
