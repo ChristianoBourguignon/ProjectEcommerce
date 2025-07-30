@@ -42,6 +42,9 @@ if ($username != "") {
     include_once("app/models/modalAlterarProduto.php");
 }
 ?>
+<script>
+    <?php require_once("app/static/js/cartController.js"); ?>
+</script>
 </body>
 </html>
 
