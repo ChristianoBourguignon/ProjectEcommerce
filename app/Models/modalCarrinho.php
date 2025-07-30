@@ -18,9 +18,9 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continuar comprando</button>
-                <button type="button"  class="btn btn-success" id="btn-finalizar-compra" style="display: none;">
+                <a href="/finalizar-compra"><button type="button"  class="btn btn-success" id="btn-finalizar-compra" style="display: none;">
                     Finalizar compra
-                </button>
+                </button></a>
             </div>
         </div>
     </div>

@@ -100,14 +100,22 @@ class DbController
 
     $sqlOrders = "
         CREATE TABLE IF NOT EXISTS orders (
-        id_orders INT AUTO_INCREMENT PRIMARY KEY,
-        user_id INT NOT NULL,
-        cupom_id INT DEFAULT NULL,
-        total_price DECIMAL(10, 2) NOT NULL,
-        status ENUM('PENDENTE', 'PAGO', 'CANCELADO') DEFAULT 'PENDENTE',
-        order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (cupom_id) REFERENCES cupons(id_cupom),
-        FOREIGN KEY (user_id) REFERENCES users(id_user)                                          
+            id_orders INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            cupom_id INT DEFAULT NULL,
+            total_price DECIMAL(10, 2) NOT NULL,
+            shipping_price DECIMAL(10, 2) DEFAULT 0.00,
+            status ENUM('PENDENTE', 'PAGO', 'CANCELADO') DEFAULT 'PENDENTE',
+            order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+            address_street VARCHAR(255) NOT NULL,
+            address_number VARCHAR(20) NOT NULL,
+            address_complement VARCHAR(100) DEFAULT NULL,
+            address_neighborhood VARCHAR(100) NOT NULL,
+            address_city VARCHAR(100) NOT NULL,
+            address_state VARCHAR(2) NOT NULL,
+            address_zipcode VARCHAR(9) NOT NULL,
+    FOREIGN KEY (cupom_id) REFERENCES cupons(id_cupom),
+    FOREIGN KEY (user_id) REFERENCES users(id_user)                              
     );
     ";
 

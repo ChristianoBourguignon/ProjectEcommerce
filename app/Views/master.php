@@ -1,5 +1,4 @@
 <?php
-
 use League\Plates;
 
 /** @var Plates\Template\Template $this */
@@ -35,14 +34,20 @@ if (session_status() === PHP_SESSION_NONE) {
 <?= $this->section('body') ?>
 
 <?php
+require_once("app/models/modalMessages.php");
 require_once("app/models/modalPerfil.php");
+
 if ($username != "") {
     include_once("app/models/modalCadastrarProdutos.php");
     include_once("app/models/modalAlterarProduto.php");
 }
 ?>
+
 <script>
-    <?php require_once("app/static/js/cartController.js"); ?>
+    <?php
+    require_once("app/static/js/cartController.js");
+    require_once("app/static/js/showModal.js");
+    ?>
 </script>
 </body>
 </html>

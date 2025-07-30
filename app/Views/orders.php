@@ -22,7 +22,7 @@ $orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
 
     <?php if(empty($orders)): ?>
         <p>Você não tem pedidos ainda.</p>
-    <?php else: ?>
+    <?php else: var_dump($orders); ?>
         <form id="formPedidos" method="POST" action="/salvarStatusPedidos">
             <table class="table table-striped">
                 <thead>
@@ -37,19 +37,24 @@ $orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
                 <tbody>
                 <?php foreach($orders as $order): ?>
                     <tr>
-                        <td><?= htmlspecialchars($order['id_orders']) ?></td>
+                        <td><?= htmlspecialchars($order['order_id']) ?></td>
                         <td><?= htmlspecialchars(date('d/m/Y', strtotime($order['order_date']))) ?></td>
                         <td>R$ <?= number_format($order['total_price'], 2, ',', '.') ?></td>
                         <td>
-                            <select name="status[<?= $order['id_orders'] ?>]" class="form-select form-select-sm">
-                                <option value="PENDENTE" <?= $order['status'] === 'PENDENTE' ? 'selected' : '' ?>>PENDENTE</option>
-                                <option value="PAGO" <?= $order['status'] === 'PAGO' ? 'selected' : '' ?>>PAGO</option>
-                                <option value="CANCELADO" <?= $order['status'] === 'CANCELADO' ? 'selected' : '' ?>>CANCELADO</option>
+                            <select name="status[<?= $order['order_id'] ?>]" class="form-select form-select-sm">
+                                <option value="PENDENTE" <?= $order['order_status'] === 'PENDENTE' ? 'selected' : '' ?>>PENDENTE</option>
+                                <option value="PAGO" <?= $order['order_status'] === 'PAGO' ? 'selected' : '' ?>>PAGO</option>
+                                <option value="CANCELADO" <?= $order['order_status'] === 'CANCELADO' ? 'selected' : '' ?>>CANCELADO</option>
                             </select>
                         </td>
                         <td>
-                            <!-- Opcional: botão para detalhes do pedido -->
-                            <a href="/pedido/<?= $order['id_orders'] ?>" class="btn btn-sm btn-info">Detalhes</a>
+                            <button
+                                    type="button"
+                                    class="btn btn-primary detailOrder"
+                                    data-id="<?= $order['order_id'] ?>"
+                            >
+                                Detalhes
+                            </button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -59,5 +64,7 @@ $orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
         </form>
     <?php endif; ?>
 </main>
+
+<?php require_once "app/models/modalDetalhePedido.php"; ?>
 
 <?php $this->stop(); ?>

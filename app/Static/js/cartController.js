@@ -148,47 +148,7 @@ $('.addToCart').on('click', function () {
     atualizarCarrinho(id, nome, preco, estoque, max_estoque, imagem);
 });
 
-$(document).ready(function () {
+$(function () {
     atualizarContadorCarrinho();
     renderizarCarrinho();
-});
-
-$('#btn-finalizar-compra').on('click', function () {
-    const cart = JSON.parse(localStorage.getItem("cart")) || []
-    if(cart === []){return;}
-    $.ajax({
-        url: "/finalizarCompra",
-        method: "POST",
-        data: {
-            cart: JSON.stringify(cart)
-        },
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-            if (data.code === 200) {
-                const alertHtml = `
-                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="orderSuccessAlert">
-                        ${data.message}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
-                    </div>`;
-                $('body').prepend(alertHtml);
-            } else {
-                const alertHtml = `
-                    <div class="alert alert-error alert-dismissible fade show" role="alert" id="orderFailedAlert">
-                        ${data.message}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
-                    </div>`;
-                $('body').prepend(alertHtml);
-            }
-            localStorage.setItem('cart', JSON.stringify([]));
-            atualizarContadorCarrinho();
-            renderizarCarrinho();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error("Erro ao finalizar compra: " + errorThrown);
-            console.error("Status:", textStatus);
-            console.error("Erro:", errorThrown);
-            console.error("Detalhes:", jqXHR.responseText);
-        }
-    });
 });

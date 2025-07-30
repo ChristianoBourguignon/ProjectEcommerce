@@ -4,7 +4,7 @@ namespace App\exceptions;
 /**
  * @throws ExceptionCustom
  */
-function load(string $controller, string $action):mixed
+function load(string $controller, string $action ,...$params):mixed
 {
     try {
         // se controller existe
@@ -19,8 +19,11 @@ function load(string $controller, string $action):mixed
         if (!method_exists($controllerInstance, $action)) {
             throw new ControllerException("O método {$action} não existe no controller {$controller}");
         }
-
-        return $controllerInstance->$action((object) $_REQUEST);
+        if (!empty($params)) {
+            return $controllerInstance->$action(...$params);
+        } else {
+            return $controllerInstance->$action((object) $_REQUEST);
+        }
     } catch (ControllerException $e) {
         throw new ExceptionCustom("Erro ao acessar um controller: ",404,$e);
     }
@@ -42,6 +45,9 @@ $router = [
         },
         "/cupons" => function () {
             return load("CuponsController", "index");
+        },
+        "/finalizar-compra" => function (){
+            return load("OrdersController", "indexCheckout");
         }
     ],
     "POST" => [
@@ -59,6 +65,10 @@ $router = [
         },
         "/finalizarCompra" => function(){
             return load("OrdersController","finalizarCompra");
+        },
+        "/pedido" => function () {
+            return load("OrdersController", "getProdutosDoPedido");
         }
     ],
 ];
+

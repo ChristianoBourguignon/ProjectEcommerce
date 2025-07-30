@@ -2,6 +2,7 @@
 
 namespace App\controllers;
 
+use _PHPStan_5878035a0\Nette\Utils\Json;
 use App\exceptions\exceptionCustom;
 use App\exceptions\ordersFinishException;
 use Exception;
@@ -17,28 +18,64 @@ class OrdersController
     function index(): void {
         Controller::view("orders");
     }
+
+    /**
+     * @throws exceptionCustom
+     */
+    function indexCheckout(): void {
+        Controller::view("checkout");
+    }
     /**
      * @throws exceptionCustom
      */
     function finalizarCompra():void
     {
+//        {
+//            "zipcode": "17190-005",
+//            "street": "Rua Boa Vista",
+//            "number": "595",
+//            "complement": "",
+//            "neighborhood": "Centro",
+//            "city": "Reginópolis",
+//            "state": "SP",
+//            "frete": "20,00",
+//            "total": "461,96",
+//            "cart": [
+//                {
+//                    "id": 2,
+//                    "name": "Teste 2",
+//                    "price": 20.99,
+//                    "stock": 2,
+//                    "image": "app/Static/uploads/img_688a2af69c3e87.36082935.png",
+//                    "max_estoque": 2
+//                },
+//                {
+//                    "id": 1,
+//                    "name": "Teste 1",
+//                    "price": 199.99,
+//                    "stock": 2,
+//                    "image": "app/Static/uploads/img_688a2add91dbc9.70084925.jpeg",
+//                    "max_estoque": 2
+//                }
+//            ]
+//        }
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        $cart = json_decode(filter_input(INPUT_POST,'cart'),true);
-        if(empty($cart)){
-            echo json_encode(["status"=>404,"messages"=>"Carrinho está vazio"]);
+        $formData = json_decode(filter_input(INPUT_POST,'formCheckout'),true);
+        if(empty($formData)){
+            echo json_encode(["code"=>404,"messages"=>"Formulário com dados ausentes está vazio"]);
             exit;
         }
-        $ids = array_map('intval', array_column($cart, 'id'));
+        $ids = array_map('intval', array_column($formData['cart'], 'id'));
 
         try {
             DbController::getConnection();
             $ids_separados = implode(',', array_fill(0, count($ids), '?'));
             if (empty($ids)) {
-                echo json_encode(["Erro: "=>$ids_separados]);
-                throw new ordersFinishException("Nenhum produto no carrinho para buscar.");
+                echo json_encode(["code"=>404,"messages"=>"Erro ao tentar separar os id's: ".$ids_separados]);
+                throw new ordersFinishException("Nenhum produto no formulario.");
             }
             $sql = "
                 SELECT p.id_products, p.name, p.price, s.quantity as stock
@@ -57,7 +94,7 @@ class OrdersController
             $total = 0;
             $errors = [];
 
-            foreach ($cart as $item) {
+            foreach ($formData['cart'] as $item) {
                 $cart_item_id = intval($item['id']);
                 $cart_item_qtnd = intval($item['stock']);
                 $cart_item_price = floatval($item['price']);
@@ -84,7 +121,10 @@ class OrdersController
                 echo json_encode(['status' => 400,'errors' => $errors]);
                 exit;
             }
-            $this->criarPedido($cart,$total);
+            $frete = floatval(preg_replace("/[^-0-9.]/",".",$formData['frete']));
+            $formData['frete'] = $frete;
+            $total += $frete;
+            $this->criarPedido($formData,$total);
         }catch (PDOException $ex){
             echo json_encode(["code"=>404,"messages"=>"Erro ao finalizar a compra."]);
             throw new exceptionCustom("Erro ao finalizar a compra", 404,$ex);
@@ -97,34 +137,65 @@ class OrdersController
     /**
      * @throws exceptionCustom
      */
-    function criarPedido(Array $cart, float $total): void {
+    function criarPedido(Array $formData, float $total): void {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
         $userId = $_SESSION['userid'] ?? null;
         $cupomId = null;
-        $status = 'Pendente';
         $orderDate = date('Y-m-d H:i:s');
+        $frete = $formData['frete'] ?? null;
+        $zipcode = $formData['zipcode'] ?? null;
+        $street = $formData['street'] ?? null;
+        $number = $formData['number'] ?? null;
+        $complement = $formData['complement'] ?? null;
+        $neighborhood = $formData['neighborhood'] ?? null;
+        $city = $formData['city'] ?? null;
+        $state = $formData['state'] ?? null;
 
         try {
             DbController::getPdo()->beginTransaction();
             if(empty($userId)){
                 throw new ordersFinishException("Id so usuario está vazio");
             }
+            if(empty($zipcode) || empty($street) || empty($city) || empty($state)){
+                echo json_encode(["code"=>404,"messages"=>"Erro ao obter o endereço do cliente para criar o pedido"]);
+                throw new ordersFinishException("Não obtido dados do endereço do cliente.");
+            }
             $stmtOrder = DbController::getPdo()->prepare("
-                INSERT INTO orders (user_id, cupom_id, total_price, status, order_date) VALUES (?, ?, ?, ?, ?)");
+                INSERT INTO orders (
+                                    user_id,
+                                    cupom_id,
+                                    total_price,
+                                    order_date,
+                                    shipping_price,
+                                    address_street,
+                                    address_number,
+                                    address_complement,
+                                    address_neighborhood,
+                                    address_city,
+                                    address_state,
+                                    address_zipcode
+                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
             $stmtOrder->execute([
                 $userId,
                 $cupomId,
                 $total,
-                $status,
-                $orderDate
+                $orderDate,
+                $frete,
+                $street,
+                $number,
+                $complement,
+                $neighborhood,
+                $city,
+                $state,
+                $zipcode
             ]);
 
             $orderId = DbController::getPdo()->lastInsertId();
             $stmtItem =DbController::getPdo()->prepare("
                 INSERT INTO items_order (order_id, product_id, quantity, unit_price) VALUES (?, ?, ?, ?)");
-            foreach ($cart as $item) {
+            foreach ($formData['cart'] as $item) {
                 $productId = intval($item['id']);
                 $quantity = intval($item['stock']);
                 $unitPrice = floatval($item['price']);
@@ -136,16 +207,16 @@ class OrdersController
                     $unitPrice
                 ]);
             }
-
             DbController::getPdo()->commit();
-            $this->descontarEstoque($cart);
+            echo json_encode(["code"=>200, "messages"=>"Pedido criado com sucesso"]);
+            $this->descontarEstoque($formData['cart']);
         } catch (ordersFinishException $e) {
             DbController::getPdo()->rollBack();
-            echo json_encode(["code"=>400,"messages"=>"Erro ao obter o id para criar o pedido: $e"]);
-            throw new exceptionCustom("Erro ao obter o id para criar o pedido: ",400,$e);
+            echo json_encode(["code"=>404,"messages"=>"Erro ao criar o pedido: " . $e->getMessage()]);
+            throw new exceptionCustom("Erro ao criar o pedido: ",400,$e);
         } catch (Exception $e) {
             DbController::getPdo()->rollBack();
-            echo json_encode(["code"=>400,"messages"=>"Erro ao criar o pedido"]);
+            echo json_encode(["code"=>404,"messages"=>"Erro no pedido: ".$e->getMessage()]);
             throw new exceptionCustom("Erro ao criar o pedido: ",400,$e);
         }
     }
@@ -175,7 +246,6 @@ class OrdersController
             }
             $stmtUpdate = DbController::getPdo()->prepare("UPDATE stock SET quantity = quantity - ?, update_in = NOW() WHERE id_stock = ?");
             $stmtUpdate->execute([$quantity, $id_stock]);
-            echo json_encode(["code"=>200,"messages"=>"Estoque descontado com sucesso"]);
         }
         } catch (Exception | PDOException | exceptionCustom $ex){
             echo json_encode(["code"=>400,"messages"=>"Erro ao criar o pedido"]);
@@ -198,18 +268,10 @@ class OrdersController
             $stmt = DbController::getPdo()->prepare("
             SELECT 
                 o.id_orders AS order_id,
-                o.user_id AS user_id,
                 o.status AS order_status,
                 o.order_date AS order_date,
-                io.id_orderitems AS item_id,
-                io.product_id AS product_id,
-                io.quantity AS item_quantity,
-                io.unit_price AS item_unit_price,
-                p.name AS product_name,
-                p.image AS product_image
+                o.total_price as total_price
             FROM orders o
-            INNER JOIN items_order io ON o.id_orders = io.order_id
-            INNER JOIN products p ON io.product_id = p.id_products
             WHERE o.user_id = ?
             ORDER BY o.id_orders DESC;
             ");
@@ -220,5 +282,41 @@ class OrdersController
         }
     }
 
+    /**
+     * @throws exceptionCustom
+     */
+    static function getProdutosDoPedido(): Json
+    {
+        $order_id = filter_input(INPUT_POST,'order_id',FILTER_SANITIZE_NUMBER_INT);
+        try {
+            DbController::getConnection();
 
+            $sql = "
+                SELECT 
+                    o.id_orders AS order_id,
+                    o.status AS order_status,
+                    o.order_date AS order_date,
+                    o.total_price AS total_price,
+                    io.id_orderitems AS item_id,
+                    io.product_id AS product_id,
+                    io.quantity AS item_quantity,
+                    io.unit_price AS item_unit_price,
+                    p.name AS product_name,
+                    p.image AS product_image
+                FROM orders o
+                INNER JOIN items_order io ON o.id_orders = io.order_id
+                INNER JOIN products p ON io.product_id = p.id_products
+                WHERE o.id_orders = ?
+            ";
+
+            $stmt = DbController::getPdo()->prepare($sql);
+            $stmt->execute([$order_id]);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode(["code"=>200,"products"=>$result]);
+            exit;
+        } catch (PDOException | exceptionCustom $e) {
+            echo json_encode(["code"=>404,"messages"=>"Erro ao obter o produto do pedido: " . $e->getMessage()]);
+            throw new exceptionCustom("Erro ao obter o produto: ", 404, $e);
+        }
+    }
 }

@@ -36,6 +36,7 @@ $logoSrc = "/App/Static/images/Logo.png";
             </ul>
         </div>
 
+        <?php if (!($_SERVER['REQUEST_URI'] == '/finalizar-compra')): ?>
         <!-- Carrinho (desktop) -->
         <a
             class="btn btn-outline-primary position-relative me-2 d-none d-lg-inline-flex"
@@ -48,6 +49,7 @@ $logoSrc = "/App/Static/images/Logo.png";
                 <span class="visually-hidden">itens no carrinho</span>
             </span>
         </a>
+        <?php endif ?>
 
 
         <!-- Perfil / Login (desktop) -->
@@ -100,9 +102,11 @@ $logoSrc = "/App/Static/images/Logo.png";
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
             </div>
             <div class="offcanvas-body">
+                <?php if (!($_SERVER['REQUEST_URI'] == '/finalizar-compra')): ?>
                 <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="/carrinho">
                     <span><i class="bi bi-cart me-2"></i>Carrinho</span>
                 </a>
+                <?php endif; ?>
 
                 <?php if ($isLoggedIn): ?>
                     <div class="fw-bold text-center mb-3">
@@ -144,5 +148,9 @@ $logoSrc = "/App/Static/images/Logo.png";
         </div>
     </div>
 </nav>
-<?php require_once("app/models/modalCarrinho.php"); ?>
+<?php
+if (!($_SERVER['REQUEST_URI'] == '/finalizar-compra')) {
+    require_once("app/models/modalCarrinho.php");
+}
+?>
 
