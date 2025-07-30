@@ -99,7 +99,4 @@ $username = $_SESSION['username'] ?? NULL;
 require_once("app/models/modalPerfil.php");
 require_once("app/models/modalCadastrarProdutos.php");
 ?>
-<script>
-    <?php require_once("app/static/js/adicionarNoCarrinho.js"); ?>
-</script>
 <?php $this->stop();
