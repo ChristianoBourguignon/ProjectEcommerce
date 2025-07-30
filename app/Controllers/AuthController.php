@@ -39,6 +39,9 @@ class AuthController
             $stmt->bindParam(':cpf', $usercpf);
             $stmt->execute();
             $_SESSION['username'] = $username;
+            $_SESSION['userid'] = (int)DbController::getPdo()->lastInsertId();
+            $this->setCookie("username",$_SESSION['username']);
+            $this->setCookie("userid",$_SESSION['userid']);
             http_response_code(200);
             header("location: /produtos");
         }catch (Exception | InvalidArgumentException $ex){
