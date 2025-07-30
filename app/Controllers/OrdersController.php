@@ -10,6 +10,13 @@ use PDOException;
 
 class OrdersController
 {
+
+    /**
+     * @throws exceptionCustom
+     */
+    function index(): void {
+        Controller::view("orders");
+    }
     /**
      * @throws exceptionCustom
      */
@@ -100,10 +107,10 @@ class OrdersController
         $orderDate = date('Y-m-d H:i:s');
 
         try {
+            DbController::getPdo()->beginTransaction();
             if(empty($userId)){
                 throw new ordersFinishException("Id so usuario está vazio");
             }
-            DbController::getPdo()->beginTransaction();
             $stmtOrder = DbController::getPdo()->prepare("
                 INSERT INTO orders (user_id, cupom_id, total_price, status, order_date) VALUES (?, ?, ?, ?, ?)");
             $stmtOrder->execute([
@@ -168,7 +175,7 @@ class OrdersController
             }
             $stmtUpdate = DbController::getPdo()->prepare("UPDATE stock SET quantity = quantity - ?, update_in = NOW() WHERE id_stock = ?");
             $stmtUpdate->execute([$quantity, $id_stock]);
-            echo json_encode(["code"=>200,"messages"=>"Erro ao criar o pedido"]);
+            echo json_encode(["code"=>200,"messages"=>"Estoque descontado com sucesso"]);
         }
         } catch (Exception | PDOException | exceptionCustom $ex){
             echo json_encode(["code"=>400,"messages"=>"Erro ao criar o pedido"]);
@@ -179,7 +186,7 @@ class OrdersController
     /**
      * @throws exceptionCustom
      */
-    function getPedidosPorUsuario(int $userid): PDO{
+    static function getPedidosPorUsuario(int $userid): array{
         try {
             DbController::getConnection();
             if (session_status() === PHP_SESSION_NONE) {
@@ -188,13 +195,29 @@ class OrdersController
             if(!$userid){
                 throw new ordersFinishException("Não há pedido para este usuario");
             }
-            $stmt = DbController::getPdo()->prepare("SELECT id_orders,total_price,status,order_date FROM orders WHERE user_id = ?");
+            $stmt = DbController::getPdo()->prepare("
+            SELECT 
+                o.id_orders AS order_id,
+                o.user_id AS user_id,
+                o.status AS order_status,
+                o.order_date AS order_date,
+                io.id_orderitems AS item_id,
+                io.product_id AS product_id,
+                io.quantity AS item_quantity,
+                io.unit_price AS item_unit_price,
+                p.name AS product_name,
+                p.image AS product_image
+            FROM orders o
+            INNER JOIN items_order io ON o.id_orders = io.order_id
+            INNER JOIN products p ON io.product_id = p.id_products
+            WHERE o.user_id = ?
+            ORDER BY o.id_orders DESC;
+            ");
             $stmt->execute([$userid]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex){
             throw new exceptionCustom("Erro ao obter os pedidos: ", 400,$ex);
         }
-
     }
 
 

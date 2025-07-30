@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use App\exceptions\exceptionCustom;
 use League\Plates;
 
 $this->layout("master", [
@@ -11,9 +12,7 @@ $this->layout("master", [
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 }
-
-$orders = OrdersController::getPedidosPorUsuario($_SESSION['user_id'] ?? 0) ?? [];
-
+$orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
 ?>
 
 <?php $this->start('body'); ?>
