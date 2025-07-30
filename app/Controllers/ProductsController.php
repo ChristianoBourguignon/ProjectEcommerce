@@ -2,8 +2,6 @@
 
 namespace App\controllers;
 
-use _PHPStan_5878035a0\Nette\Utils\Json;
-use App\exceptions\addToCartExceptions;
 use App\exceptions\exceptionCustom;
 use App\exceptions\invalidArgumentsForProductsException;
 use PDO;
