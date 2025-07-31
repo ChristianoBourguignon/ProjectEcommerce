@@ -13,3 +13,12 @@ RUN docker-php-ext-install pdo_mysql
 
 
 WORKDIR /var/www/html
+
+# Copia somente arquivos do Composer para aproveitar cache do Docker
+COPY composer.json composer.lock* ./
+
+# Roda o composer install durante o build
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Copia o restante do código da aplicação
+COPY . .

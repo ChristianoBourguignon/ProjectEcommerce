@@ -16,8 +16,7 @@
         "league/plates": "^3.6",
         "ext-pdo": "*",
         "ext-json": "*",
-        "vlucas/phpdotenv": "^5.6",
-      "ext-http": "*"
+        "vlucas/phpdotenv": "^5.6"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1"
