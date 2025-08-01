@@ -21,4 +21,12 @@ class HomeController
     {
         Controller::view("404");
     }
+
+    /**
+     * @throws exceptionCustom
+     */
+    public function sobre():void
+    {
+        Controller::view("about");
+    }
 }
