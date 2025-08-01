@@ -22,7 +22,7 @@ function showModal(code, message) {
             titleText = 'Aviso';
             break;
         default:
-            bgClass = 'bg-primary';
+            bgClass = 'bg-primary text-white';
             titleText = 'Informação';
     }
     $header.removeClass('bg-success bg-danger bg-warning bg-primary text-dark text-white').addClass(bgClass);

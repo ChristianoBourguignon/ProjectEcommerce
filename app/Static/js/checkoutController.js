@@ -97,14 +97,14 @@ function enviarDados(formObjectJson) {
         dataType: 'json',
         success: function (data) {
             if (data.code === 200) {
-                showModal(data.code,data.messages);
+                showModal(data.code,data.message);
                 showModal(200, "Pedido realizado com sucesso!")
                 localStorage.setItem('cart', JSON.stringify([]));
                 atualizarContadorCarrinho();
                 renderizarCarrinho();
                 window.location.href = "/meus-pedidos"
             } else {
-                showModal(data.code, data.messages)
+                showModal(data.code, data.message)
             }
         },
         error: function (jqXHR) {

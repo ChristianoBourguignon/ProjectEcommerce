@@ -1,27 +1,87 @@
 $('.detailOrder').on('click', function () {
     const order_id = $(this).data('id');
-    let items = obterProdutosDoPedido(order_id);
-    mostrarDetalheDoPedido(items,order_id);
+    obterProdutosDoPedido(order_id).then(itens => {
+        mostrarDetalheDoPedido(itens, order_id);
+    });
 });
-function obterProdutosDoPedido(order_id){
+$('#formPedidos').on('submit', function (e) {
+    e.preventDefault();
+
+    const pedidosAlterados = [];
+
+    const selects = this.querySelectorAll('.pedido-status');
+    selects.forEach(select => {
+        const statusOriginal = select.getAttribute('data-status');
+        const statusAtual = select.value;
+        const orderId = select.getAttribute('data-order-id');
+
+        if (statusAtual !== statusOriginal) {
+            pedidosAlterados.push({
+                order_id: orderId,
+                status: statusAtual
+            });
+        }
+    });
+
+    if (pedidosAlterados.length === 0) {
+        showModal(300,"Nenhum pedido foi alterado.")
+        return;
+    }
+    console.log(pedidosAlterados);
+    atualizarStatusPedido(pedidosAlterados);
+});
+
+function atualizarStatusPedido(pedidosAlterados){
+    const orders = pedidosAlterados.map(order => ({
+        order_id: Number(order.order_id),
+        status: String(order.status)
+    }));
     $.ajax({
-        url: `/pedido`,
+        url: `/atualizarStatusPedidos`,
         method: "POST",
         data: {
-            order_id: order_id
+            orders: JSON.stringify(orders)
         },
         dataType: 'json',
         success: function (data) {
-            if (data.code === 200) {
-                return data.products;
-            } else {
-                showModal(data.code, data.messages)
+            if(data.code === 200){
+                showModal(200,data.message)
             }
         },
         error: function (jqXHR) {
-            showModal(404, "Erro ao obter os dados do pedido: " + jqXHR.responseText);
-            products = [];
+            showModal(404,"Erro ao atualizar o status dos produtos: " + jqXHR.responseText);
+            console.log(jqXHR.responseText)
         }
+    });
+
+}
+
+function obterProdutosDoPedido(order_id) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `/getItemsPedido`,
+            method: "POST",
+            data: { order_id: order_id },
+            dataType: 'json',
+            success: function (data) {
+                if (data.code === 200) {
+                    let produtos = data.products;
+                    if (typeof produtos === 'string') {
+                        try {
+                            produtos = JSON.parse(produtos);
+                        } catch (e) {
+                            return reject("Erro ao parsear JSON");
+                        }
+                    }
+                    resolve(produtos);
+                } else {
+                    reject(data.message);
+                }
+            },
+            error: function (jqXHR) {
+                reject("Erro ao obter produtos: " + jqXHR.responseText);
+            }
+        });
     });
 }
 function mostrarDetalheDoPedido(itens, order_id) {
@@ -54,24 +114,26 @@ function mostrarDetalheDoPedido(itens, order_id) {
             <tbody>
     `;
 
-    let total = 0;
+    let total = Number(itens[0].shipping_price);
 
     itens.forEach((item, index) => {
-        const itemTotal = item.price * item.stock;
+        const itemTotal = Number(item.item_unit_price) * Number(item.item_quantity);
+        const unitPrice = Number(item.item_unit_price);
+        const quantity = Number(item.item_quantity);
         total += itemTotal;
 
         html += `
             <tr data-index="${index}">
                 <td>
                     <div class="d-flex align-items-center gap-2">
-                        <img src="${item.image}" alt="${item.name}" width="50">
-                        ${item.name}
+                        <img src="${item.product_image}" alt="${item.product_name}" width="50">
+                        ${item.product_name}
                     </div>
                 </td>
-                <td>R$ ${item.price.toFixed(2).replace('.', ',')}</td>
+                <td>R$ ${unitPrice.toFixed(2).replace('.', ',')}</td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <span class="mx-2">${item.stock}</span>
+                        <span class="mx-2">${quantity}</span>
                     </div>
                 </td>
                 <td>R$ ${itemTotal.toFixed(2).replace('.', ',')}</td>
