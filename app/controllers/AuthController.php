@@ -5,7 +5,6 @@ namespace App\controllers;
 use App\exceptions\exceptionCustom;
 use App\exceptions\invalidParametersAuthException;
 use Exception;
-use http\Exception\InvalidArgumentException;
 use PDO;
 
 class AuthController
@@ -44,7 +43,7 @@ class AuthController
             $this->setCookie("userid",$_SESSION['userid']);
             http_response_code(200);
             header("location: /produtos");
-        }catch (Exception | InvalidArgumentException $ex){
+        }catch (Exception | invalidParametersAuthException $ex){
             throw new exceptionCustom("Erro ao acessar a conta: ",404,$ex);
         }
     }
@@ -76,7 +75,7 @@ class AuthController
             $this->setCookie("userid",$user['id_user']);
             header("Location: /produtos");
             exit;
-        } catch (Exception | InvalidArgumentException $ex){
+        } catch (Exception | invalidParametersAuthException $ex){
             throw new exceptionCustom("Erro ao acessar a conta: ",404,$ex);
         }
     }
