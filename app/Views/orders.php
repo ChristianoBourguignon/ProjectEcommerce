@@ -22,7 +22,7 @@ $orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
 
     <?php if(empty($orders)): ?>
         <p>Você não tem pedidos ainda.</p>
-    <?php else: var_dump($orders); ?>
+    <?php else: ?>
         <form id="formPedidos" method="POST" action="/salvarStatusPedidos">
             <table class="table table-striped">
                 <thead>
@@ -41,7 +41,12 @@ $orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
                         <td><?= htmlspecialchars(date('d/m/Y', strtotime($order['order_date']))) ?></td>
                         <td>R$ <?= number_format($order['total_price'], 2, ',', '.') ?></td>
                         <td>
-                            <select name="status[<?= $order['order_id'] ?>]" class="form-select form-select-sm">
+                            <select
+                                    name="status"
+                                    data-status="<?= $order['order_status'] ?>"
+                                    data-order-id="<?= $order['order_id'] ?>"
+                                    class="form-select form-select-sm pedido-status"
+                            >
                                 <option value="PENDENTE" <?= $order['order_status'] === 'PENDENTE' ? 'selected' : '' ?>>PENDENTE</option>
                                 <option value="PAGO" <?= $order['order_status'] === 'PAGO' ? 'selected' : '' ?>>PAGO</option>
                                 <option value="CANCELADO" <?= $order['order_status'] === 'CANCELADO' ? 'selected' : '' ?>>CANCELADO</option>
