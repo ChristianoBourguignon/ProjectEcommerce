@@ -46,6 +46,9 @@ $router = [
         "/cupons" => function () {
             return load("CuponsController", "index");
         },
+        "/sobre" => function () {
+            return load("HomeController", "sobre");
+        },
         "/finalizar-compra" => function (){
             return load("OrdersController", "indexCheckout");
         }
@@ -66,8 +69,11 @@ $router = [
         "/finalizarCompra" => function(){
             return load("OrdersController","finalizarCompra");
         },
-        "/pedido" => function () {
-            return load("OrdersController", "getProdutosDoPedido");
+        "/getItemsPedido" => function () {
+            return load("OrdersController", "getItemsPedido");
+        },
+        "/atualizarStatusPedidos" => function (){
+            return load("OrdersController","atualizarStatusPedidos");
         }
     ],
 ];
