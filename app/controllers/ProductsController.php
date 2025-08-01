@@ -54,6 +54,13 @@ class ProductsController
      */
     public static function criarProduto(): void
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        if(!isset($_SESSION['username'])){
+            echo json_encode(["code"=>404,"Você não tem acesso para realizar essa operação"]);
+            throw new exceptionCustom("Erro ao criar o produto: ",404,new invalidArgumentsForProductsException("Sem acesso"));
+        }
         DbController::getConnection();
         /** @var string $prodName */
         $prodNome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';

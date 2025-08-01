@@ -1,0 +1,608 @@
+
+2025-08-01 20:32:41- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:33:44- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:34:19- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:42:44- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:43:25- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:46:58- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:47:19- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:49:48- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:50:09- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:50:45- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:52:28- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:52:53- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:53:02- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:53:12- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 20:58:01- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:12:49- 404 - Erro ao obter o id do usuario:  
+ App\exceptions\ordersFinishException: Não há pedido para este usuario in /var/www/html/app/controllers/OrdersController.php:240
+Stack trace:
+#0 /var/www/html/app/views/orders.php(15): App\controllers\OrdersController::getPedidosPorUsuario(4)
+#1 /var/www/html/vendor/league/plates/src/Template/Template.php(169): include('/var/www/html/a...')
+#2 /var/www/html/vendor/league/plates/src/Template/Template.php(170): League\Plates\Template\Template->League\Plates\Template\{closure}('/var/www/html/a...')
+#3 /var/www/html/vendor/league/plates/src/Engine.php(304): League\Plates\Template\Template->render(Array)
+#4 /var/www/html/app/controllers/Controller.php(24): League\Plates\Engine->render('orders', Array)
+#5 /var/www/html/app/controllers/OrdersController.php(20): App\controllers\Controller::view('orders')
+#6 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController->index(Object(stdClass))
+#7 /var/www/html/App/routers/router.php(56): App\exceptions\load('OrdersControlle...', 'index')
+#8 /var/www/html/index.php(32): App\exceptions\{closure}()
+#9 {main}
+2025-08-01 21:12:49- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:14:18- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:14:26- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:14:35- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:15:24- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:15:27- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:16:05- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:16:10- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:17:16- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:18:13- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:18:17- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:18:17- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:18:22- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:18:58- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:18:58- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:19:01- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:19:26- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:19:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:19:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:19:45- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:20:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:20:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:20:42- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:20:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:20:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:20:56- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:21:11- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:21:11- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:21:13- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:22:02- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:22:04- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:22:04- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:22:07- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:23:59- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:25:57- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:25:57- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:25:59- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:26:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:26:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:26:37- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:26:40- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:30:34- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:30:34- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:30:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:30:51- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 21:31:21- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:32:21- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:47:26- 404 - Erro ao atualizar status do pedido:  | 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:49:05- 404 -  | 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:49:37- 404 - Erro ao atualizar status do pedido:  | 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:50:36- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 21:50:55- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:01:05- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:01:05- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:01:08- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:02:03- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:02:05- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:02:08- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:02:08- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:02:11- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:02:32- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:02:32- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:02:34- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:03:01- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:03:03- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:03:03- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:03:06- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:03:36- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:03:36- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:03:39- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:09:51- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:10:15- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:10:15- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:10:18- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:12:20- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:12:31- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:12:31- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:12:34- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:12:47- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:12:47- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:12:50- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:13:04- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:13:04- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:13:06- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:15:19- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:15:37- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:18:38- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:19:56- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:19:56- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:19:59- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:21:11- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:21:14- 404 - Erro ao acessar a rota: 
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:21:17- 404 - Erro ao atualizar status do pedido: 
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:28:32- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:29:16- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:29:29- 404 - Erro ao atualizar status do pedido:  
+ App\exceptions\ordersFinishException: Erro teste in /var/www/html/app/controllers/OrdersController.php:324
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController::atualizarStatusPedidos(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(106): App\exceptions\load('OrdersControlle...', 'atualizarStatus...')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-01 22:31:45- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:31:55- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-01 22:32:02- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}

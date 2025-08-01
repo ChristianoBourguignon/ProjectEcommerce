@@ -38,19 +38,49 @@ $router = [
             return load("ProductsController", "index");
         },
         "/deslogar" => function () {
-            return load("AuthController", "deslogar");
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if(isset($_SESSION['username'])){
+                return load("AuthController", "deslogar");
+            } else {
+                return load("HomeController", "notFound");
+            }
         },
         "/meus-pedidos" => function () {
-            return load("OrdersController",  "index");
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            if(isset($_SESSION['username'])){
+                return load("OrdersController",  "index");
+            } else {
+                return load("HomeController", "notFound");
+            }
         },
         "/cupons" => function () {
-            return load("CuponsController", "index");
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            if(isset($_SESSION['username'])){
+                return load("CuponsController", "index");
+            } else {
+                return load("HomeController", "notFound");
+            }
         },
         "/sobre" => function () {
             return load("HomeController", "sobre");
         },
         "/finalizar-compra" => function (){
-            return load("OrdersController", "indexCheckout");
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if(isset($_SESSION['username'])){
+                return load("OrdersController", "indexCheckout");
+            } else {
+                return load("HomeController", "notFound");
+            }
         }
     ],
     "POST" => [

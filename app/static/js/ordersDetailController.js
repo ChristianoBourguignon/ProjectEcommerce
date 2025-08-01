@@ -46,11 +46,12 @@ function atualizarStatusPedido(pedidosAlterados){
         success: function (data) {
             if(data.code === 200){
                 showModal(200,data.message)
+            } else {
+                showModal(data.code,data.message);
             }
         },
-        error: function (jqXHR) {
-            showModal(404,"Erro ao atualizar o status dos produtos: " + jqXHR.responseText);
-            console.log(jqXHR.responseText)
+        error: function (jqXHRa) {
+            showModal(jqXHRa.status,"Erro ao atualizar o status dos pedidos: " + jqXHRa.responseText);
         }
     });
 

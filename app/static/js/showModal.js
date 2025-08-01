@@ -9,7 +9,7 @@ function showModal(code, message) {
 
     switch (code) {
         case 200:
-            bgClass = 'bg-success';
+            bgClass = 'bg-success text-white';
             titleText = 'Sucesso';
             break;
         case 400:
