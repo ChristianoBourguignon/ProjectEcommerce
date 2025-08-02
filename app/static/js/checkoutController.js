@@ -107,8 +107,8 @@ function enviarDados(formObjectJson) {
                 showModal(data.code, data.message)
             }
         },
-        error: function (jqXHR) {
-            showModal(404, "Erro ao finalizar compra: " + jqXHR.responseText);
+        error: function (error) {
+            showModal(error.status, "Erro ao finalizar compra: " + error.responseText);
         }
     });
 }
@@ -136,7 +136,7 @@ $(function () {
                     atualizarFrete()
                 },
                 error: function (error) {
-                    showModal(404,error.responseText);
+                    showModal(error.status,"Erro ao consultar o cep: " + error.responseText);
                 }
             });
         }

@@ -1,0 +1,140 @@
+
+2025-08-02 00:08:53- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:08:56- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:08:57- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:09:04- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:09:06- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:09:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:09:42- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:09:55- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:55:05- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 00:55:09- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:10:37- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:10:39- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:10:40- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:10:44- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:11:03- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:11:16- 404 - Erro ao obter os ids:  
+ App\exceptions\ordersFinishException: Campo obrigatório ausente: complement in /var/www/html/app/controllers/OrdersController.php:73
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(100): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-02 05:16:08- 404 - Erro ao obter os ids:  
+ App\exceptions\ordersFinishException: Campo obrigatório ausente: complement in /var/www/html/app/controllers/OrdersController.php:73
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(100): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-02 05:16:16- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:16:26- 404 - Erro ao obter os ids:  
+ App\exceptions\ordersFinishException: Campo obrigatório ausente: complement in /var/www/html/app/controllers/OrdersController.php:73
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(100): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-02 05:19:18- 404 - Erro ao obter os ids:  
+ App\exceptions\ordersFinishException: Campo obrigatório ausente: complement in /var/www/html/app/controllers/OrdersController.php:73
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(100): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-02 05:20:42- 404 - Erro ao obter os ids:  
+ App\exceptions\ordersFinishException: Campo obrigatório ausente: complement in /var/www/html/app/controllers/OrdersController.php:73
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\OrdersController->finalizarCompra(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(100): App\exceptions\load('OrdersControlle...', 'finalizarCompra')
+#2 /var/www/html/index.php(32): App\exceptions\{closure}()
+#3 {main}
+2025-08-02 05:29:48- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:30:09- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:30:39- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:31:09- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:31:21- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:34:30- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:35:33- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:36:46- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:37:57- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-02 05:38:44- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}

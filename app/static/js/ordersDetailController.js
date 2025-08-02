@@ -50,8 +50,8 @@ function atualizarStatusPedido(pedidosAlterados){
                 showModal(data.code,data.message);
             }
         },
-        error: function (jqXHRa) {
-            showModal(jqXHRa.status,"Erro ao atualizar o status dos pedidos: " + jqXHRa.responseText);
+        error: function (error) {
+            showModal(404,"Erro ao atualizar o status dos pedidos: " + error.responseText);
         }
     });
 
@@ -79,8 +79,8 @@ function obterProdutosDoPedido(order_id) {
                     reject(data.message);
                 }
             },
-            error: function (jqXHR) {
-                reject("Erro ao obter produtos: " + jqXHR.responseText);
+            error: function (error) {
+                reject("Erro ao obter produtos: " + error.responseText);
             }
         });
     });
