@@ -3,7 +3,7 @@ namespace App\exceptions;
 
 use RuntimeException;
 
-class addToCartExceptions extends RuntimeException
+class cuponsExceptions extends RuntimeException
 {
     public function __construct(string $message)
     {
