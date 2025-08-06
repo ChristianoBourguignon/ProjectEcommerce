@@ -2,30 +2,30 @@
 namespace App\exceptions;
 
 /**
- * @throws ExceptionCustom
+ * @throws exceptionCustom
  */
-function load(string $controller, string $action ,...$params):mixed
+function load(string $controller, string $action ,mixed ...$params):mixed
 {
     try {
         // se controller existe
         $controllerNamespace = "App\\controllers\\{$controller}";
 
         if (!class_exists($controllerNamespace)) {
-            throw new ControllerException("O controller {$controller} não existe");
+            throw new controllerException("O controller {$controller} não existe");
         }
 
         $controllerInstance = new $controllerNamespace();
 
         if (!method_exists($controllerInstance, $action)) {
-            throw new ControllerException("O método {$action} não existe no controller {$controller}");
+            throw new controllerException("O método {$action} não existe no controller {$controller}");
         }
         if (!empty($params)) {
             return $controllerInstance->$action(...$params);
         } else {
             return $controllerInstance->$action((object) $_REQUEST);
         }
-    } catch (ControllerException $e) {
-        throw new ExceptionCustom("Erro ao acessar um controller: ",404,$e);
+    } catch (controllerException $e) {
+        throw new exceptionCustom("Erro ao acessar um controller: ",404,$e);
     }
 }
 

@@ -1,7 +1,7 @@
 <?php
-namespace App\exceptions;
+namespace app\exceptions;
 
-use App\controllers\DbController;
+use app\controllers\DbController;
 use Dotenv\Dotenv;
 use App\exceptions\exceptionCustom;
 

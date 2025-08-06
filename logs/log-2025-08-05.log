@@ -1,0 +1,149 @@
+
+2025-08-05 13:47:48- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:48:41- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:48:53- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:49:15- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:49:38- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:50:08- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:50:29- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:50:32- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:50:50- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:50:58- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 13:51:20- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:55:24- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:55:42- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:55:42- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:57:17- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:57:18- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:57:32- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:57:46- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:57:46- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:58:57- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:58:57- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:59:20- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:59:20- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:59:48- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 15:59:48- 404 - Erro ao acessar a rota:  
+ App\exceptions\routersExceptions: A rota não existe in /var/www/html/index.php:28
+Stack trace:
+#0 {main}
+2025-08-05 20:06:58- 404 - Erro ao acessar um controller:  
+ App\exceptions\controllerException: O controller CuponsController não existe in /var/www/html/App/routers/router.php:14
+Stack trace:
+#0 /var/www/html/App/routers/router.php(67): App\exceptions\load('CuponsControlle...', 'index')
+#1 /var/www/html/index.php(32): App\exceptions\{closure}()
+#2 {main}
+2025-08-05 20:07:46- 404 - Erro ao acessar um controller:  
+ App\exceptions\controllerException: O controller CuponsController não existe in /var/www/html/App/routers/router.php:14
+Stack trace:
+#0 /var/www/html/App/routers/router.php(67): App\exceptions\load('CuponsControlle...', 'index')
+#1 /var/www/html/index.php(32): App\exceptions\{closure}()
+#2 {main}
+2025-08-05 20:08:35- 404 - Erro ao acessar um controller:  
+ App\exceptions\controllerException: O controller CuponsController não existe in /var/www/html/App/routers/router.php:14
+Stack trace:
+#0 /var/www/html/App/routers/router.php(67): App\exceptions\load('CuponsControlle...', 'index')
+#1 /var/www/html/index.php(32): App\exceptions\{closure}()
+#2 {main}
+2025-08-05 20:09:04- 404 - Erro ao acessar um controller:  
+ App\exceptions\controllerException: O controller CuponsController não existe in /var/www/html/App/routers/router.php:14
+Stack trace:
+#0 /var/www/html/App/routers/router.php(67): App\exceptions\load('CuponsControlle...', 'index')
+#1 /var/www/html/index.php(32): App\exceptions\{closure}()
+#2 {main}
+2025-08-05 20:09:55- 404 - Erro ao acessar um controller:  
+ App\exceptions\controllerException: O controller CuponsController não existe in /var/www/html/App/routers/router.php:14
+Stack trace:
+#0 /var/www/html/App/routers/router.php(67): App\exceptions\load('CuponsControlle...', 'index')
+#1 /var/www/html/index.php(32): App\exceptions\{closure}()
+#2 {main}
+2025-08-05 20:10:52- 404 - Erro ao acessar um controller:  
+ App\exceptions\controllerException: O controller CuponsController não existe in /var/www/html/App/routers/router.php:14
+Stack trace:
+#0 /var/www/html/App/routers/router.php(67): App\exceptions\load('CuponsControlle...', 'index')
+#1 /var/www/html/index.php(32): App\exceptions\{closure}()
+#2 {main}
+2025-08-05 20:10:55- 404 - Erro ao acessar um controller:  
+ App\exceptions\controllerException: O controller HomeController não existe in /var/www/html/App/routers/router.php:14
+Stack trace:
+#0 /var/www/html/App/routers/router.php(35): App\exceptions\load('HomeController', 'index')
+#1 /var/www/html/index.php(32): App\exceptions\{closure}()
+#2 {main}
+2025-08-05 20:12:56- 404 - Erro ao acessar um controller:  
+ App\exceptions\controllerException: O controller HomeController não existe in /var/www/html/App/routers/router.php:14
+Stack trace:
+#0 /var/www/html/App/routers/router.php(35): App\exceptions\load('HomeController', 'index')
+#1 /var/www/html/index.php(32): App\exceptions\{closure}()
+#2 {main}

@@ -315,7 +315,17 @@ class OrdersController
             $stmt->execute([$userid]);
             /* @var array<int, array{order_id:int, order_status:string, order_date:string, total_price:float}> $pedidos */
             $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $pedidos;
+            $orders = [];
+            foreach ($pedidos as $order) {
+                /** @var array{order_id:string, order_status:string, order_date:string, total_price:string} $order */
+                $orders[] = [
+                    'order_id' => (int)$order['order_id'],
+                    'order_status' => (string)$order['order_status'],
+                    'order_date' => (string)$order['order_date'],
+                    'total_price' => (float)$order['total_price'],
+                ];
+            }
+            return $orders;
         } catch (PDOException $ex){
             throw new exceptionCustom("Erro ao obter os pedidos: ", 400,$ex);
         } catch (ordersFinishException $ex){
@@ -324,18 +334,19 @@ class OrdersController
     }
 
     /**
-     * @return array{
-     *     order_id:int,
-     *     order_status:string,
-     *     order_date:string,
-     *     total_price:float,
-     *     shipping_price: float,
-     *     item_id:int,
-     *     product_id:int,
-     *     item_quantity:int,
-     *     item_unit_price:float,
-     *     product_name:string,
-     *     product_image:string}
+     * @return array<int, array{
+     * order_id:int,
+     * order_status:string,
+     * order_date:string,
+     * total_price:float,
+     * shipping_price:float,
+     * item_id:int,
+     * product_id:int,
+     * item_quantity:int,
+     * item_unit_price:float,
+     * product_name:string,
+     * product_image:string
+     * }>
      * @throws exceptionCustom
      */
     static function getItemsPedido(): array
@@ -365,9 +376,29 @@ class OrdersController
             $stmt = DbController::getPdo()->prepare($sql);
             $stmt->execute([$order_id]);
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo json_encode(["code"=>200,"products"=>$result]);
-            return $result;
+            $items = [];
+
+            foreach ($result as $item) {
+                /** @var array<string, string> $item */
+                $items[] = [
+                    'order_id' => (int)$item['order_id'],
+                    'order_status' => (string)$item['order_status'],
+                    'order_date' => (string)$item['order_date'],
+                    'total_price' => (float)$item['total_price'],
+                    'shipping_price' => (float)$item['shipping_price'],
+                    'item_id' => (int)$item['item_id'],
+                    'product_id' => (int)$item['product_id'],
+                    'item_quantity' => (int)$item['item_quantity'],
+                    'item_unit_price' => (float)$item['item_unit_price'],
+                    'product_name' => (string)$item['product_name'],
+                    'product_image' => (string)$item['product_image'],
+                ];
+            }
+            http_response_code(200);
+            echo json_encode(["code"=>200,"products"=>$items]);
+            return $items;
         } catch (PDOException | exceptionCustom $e) {
+            http_response_code(404);
             echo json_encode(["code"=>$e->getCode(),"message"=>"Erro ao obter o produto do pedido: " . $e->getMessage()]);
             throw new exceptionCustom("Erro ao obter o produto: ", 404, $e);
         }
@@ -378,7 +409,15 @@ class OrdersController
      */
     static function atualizarStatusPedidos():void
     {
-        $data_orders = json_decode(filter_input(INPUT_POST,'orders'), true);
+//        $data_orders = json_decode(filter_input(INPUT_POST,'orders'), true);
+        $json = filter_input(INPUT_POST, 'orders');
+
+        if (!is_string($json)) {
+            echo json_encode(["code"=> 404, "message"=>"Dados ausentes ou inválidos"]);
+            exit;
+        }
+
+        $data_orders = json_decode($json, true);
 
         if (!is_array($data_orders)) {
             echo json_encode(["code"=> 404, "message"=>"Dados comprometidos"]);

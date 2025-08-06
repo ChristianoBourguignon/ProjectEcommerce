@@ -153,4 +153,3 @@ if (!($_SERVER['REQUEST_URI'] == '/finalizar-compra')) {
     require_once("app/models/modalCarrinho.php");
 }
 ?>
-
