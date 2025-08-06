@@ -68,7 +68,7 @@ $coupons = [
 <!-- Modal para Criar Cupom -->
 <div class="modal fade" id="createCouponModal" tabindex="-1" aria-labelledby="createCouponModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <form action="/salvarCupom" method="POST" class="modal-content">
+        <form action="/salvarCupom" id="formCupom" method="POST" class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="createCouponModalLabel">
                     <i class="bi bi-ticket-detailed me-2"></i>Criar Novo Cupom
@@ -118,4 +118,7 @@ $coupons = [
     </div>
 </div>
 
+<script>
+    <?php require_once ("app/static/js/cuponsController.js") ?>
+</script>
 <?php $this->stop(); ?>
