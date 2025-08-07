@@ -1,8 +1,11 @@
 <?php
 
-namespace app\controllers;
+namespace app\views;
+use App\controllers\OrdersController;
 use App\exceptions\exceptionCustom;
-use League\Plates;
+use League\Plates\Engine;
+
+/** @var Engine $this */
 
 $this->layout("master", [
     'title' => "Meus Pedidos",
@@ -12,7 +15,8 @@ $this->layout("master", [
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 }
-$orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
+$userid = isset($_SESSION['userid']) ? (int)$_SESSION['userid'] : 0;
+$orders = OrdersController::getPedidosPorUsuario($userid);
 ?>
 
 <?php $this->start('body'); ?>
@@ -22,7 +26,7 @@ $orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
 
     <?php if(empty($orders)): ?>
         <p>Você não tem pedidos ainda.</p>
-    <?php else: var_dump($orders);?>
+    <?php else:?>
         <form id="formPedidos" method="POST" action="/salvarStatusPedidos">
             <table class="table table-striped">
                 <thead>
@@ -37,8 +41,8 @@ $orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
                 <tbody>
                 <?php foreach($orders as $order): ?>
                     <tr>
-                        <td><?= htmlspecialchars($order['order_id']) ?></td>
-                        <td><?= htmlspecialchars(date('d/m/Y', strtotime($order['order_date']))) ?></td>
+                        <td><?= htmlspecialchars((string)$order['order_id']) ?></td>
+                        <td><?= htmlspecialchars(date('d/m/Y', (int)strtotime($order['order_date']))) ?></td>
                         <td>R$ <?= number_format($order['total_price'], 2, ',', '.') ?></td>
                         <td>
                             <select

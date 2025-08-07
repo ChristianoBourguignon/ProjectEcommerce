@@ -1,9 +1,10 @@
 <?php
 
-namespace app\controllers;
-use League\Plates;
+namespace app\views;
+use League\Plates\Engine;
+use App\controllers\ProductsController;
 
-/** @var Plates\Template\Template $this */
+/** @var Engine $this */
 $this->layout("master", [
     'title' => "Produtos",
     'description' => "Aqui você encontrará todos os produtos disponível."
@@ -11,8 +12,8 @@ $this->layout("master", [
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 }
-$produtos = ProductsController::getProdutos() ?? NULL;
-$username = $_SESSION['username'] ?? NULL;
+$produtos = ProductsController::getProdutos();
+$username = $_SESSION['username'] ?? null;
 
 ?>
 <?php $this->start('body');?>
@@ -40,16 +41,16 @@ $username = $_SESSION['username'] ?? NULL;
                                             class="dropdown-item btn-editar-produto"
                                             data-bs-toggle="modal"
                                             data-bs-target="#alterarProdutoModal"
-                                            data-id="<?= htmlspecialchars($produto['id_products']) ?>"
+                                            data-id="<?= htmlspecialchars((string)$produto['id']) ?>"
                                             data-nome="<?= htmlspecialchars($produto['name']) ?>"
-                                            data-preco="<?= htmlspecialchars($produto['price']) ?>"
-                                            data-estoque="<?= htmlspecialchars($produto['quantity']) ?>"
+                                            data-preco="<?= htmlspecialchars((string)$produto['price']) ?>"
+                                            data-estoque="<?= htmlspecialchars((string)$produto['quantity']) ?>"
                                     >
                                         Alterar
                                     </a>
                                     <li>
                                         <form action="/excluirProduto" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este produto?')" style="margin: 0;">
-                                            <input type="hidden" name="product_id" value="<?= $produto['id_products'] ?>">
+                                            <input type="hidden" name="product_id" value="<?= $produto['id'] ?>">
                                             <button type="submit" class="dropdown-item text-danger" style="background: none; border: none;">Excluir</button>
                                         </form>
                                     </li>
@@ -59,11 +60,11 @@ $username = $_SESSION['username'] ?? NULL;
 
                         <button
                                 type="button"
-                                data-id="<?= htmlspecialchars($produto['id_products']) ?>"
+                                data-id="<?= htmlspecialchars((string)$produto['id']) ?>"
                                 data-nome="<?= htmlspecialchars($produto['name']) ?>"
-                                data-preco="<?= htmlspecialchars($produto['price']) ?>"
+                                data-preco="<?= htmlspecialchars((string)$produto['price']) ?>"
                                 data-estoque="1"
-                                data-estoque-max="<?= htmlspecialchars($produto['quantity']) ?>"
+                                data-estoque-max="<?= htmlspecialchars((string)$produto['quantity']) ?>"
                                 data-image="<?= htmlspecialchars($produto['image']) ?>"
                                 class="btn btn-primary w-100 mt-3 addToCart"
                         >

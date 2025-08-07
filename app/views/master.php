@@ -37,7 +37,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once("app/models/modalMessages.php");
 require_once("app/models/modalPerfil.php");
 
-if ($username != "") {
+if (isset($username) && $username != "") {
     include_once("app/models/modalCadastrarProdutos.php");
     include_once("app/models/modalAlterarProduto.php");
 }

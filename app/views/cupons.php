@@ -1,7 +1,10 @@
 <?php
 
-namespace app\controllers;
-use League\Plates;
+namespace app\views;
+use App\controllers\CuponsController;
+use League\Plates\Engine;
+
+/** @var Engine $this */
 
 $this->layout("master", [
     'title' => "Gerenciar Cupons",
@@ -11,11 +14,7 @@ $this->layout("master", [
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-$coupons = [
-    ['code' => 'FRETEGRATIS', 'percent' => 0, 'value' => 10, 'min_cart' => 50, 'created' => '2025-07-25 10:00:00', 'expires' => '2025-08-30', 'active' => true],
-    ['code' => 'DESC20', 'percent' => 20, 'value' => 0, 'min_cart' => 100, 'created' => '2025-07-28 09:00:00', 'expires' => '2025-08-15', 'active' => false],
-];
+$coupons = CuponsController::obterCupons();
 ?>
 
 <?php $this->start('body'); ?>
@@ -45,12 +44,12 @@ $coupons = [
             <tbody>
             <?php foreach ($coupons as $c): ?>
                 <tr>
-                    <td><strong><?= $c['code'] ?></strong></td>
-                    <td><?= $c['percent'] ?>%</td>
-                    <td>R$ <?= number_format($c['value'], 2, ',', '.') ?></td>
-                    <td>R$ <?= number_format($c['min_cart'], 2, ',', '.') ?></td>
-                    <td><?= date('d/m/Y H:i', strtotime($c['created'])) ?></td>
-                    <td><?= date('d/m/Y', strtotime($c['expires'])) ?></td>
+                    <td><strong><?= htmlspecialchars($c['code']) ?></strong></td>
+                    <td><?= htmlspecialchars((string)$c['discount_percent']) ?>%</td>
+                    <td>R$ <?= number_format($c['discount_value'], 2, ',', '.') ?></td>
+                    <td>R$ <?= number_format($c['min_cart_value'], 2, ',', '.') ?></td>
+                    <td><?= date('d/m/Y H:i', (int)strtotime($c['created_at'])) ?></td>
+                    <td><?= date('d/m/Y', (int)strtotime($c['expires_at'])) ?></td>
                     <td>
                         <?php if ($c['active']): ?>
                             <span class="badge bg-success">Ativo</span>

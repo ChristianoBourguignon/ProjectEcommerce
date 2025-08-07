@@ -1,7 +1,9 @@
 <?php
 
-namespace app\controllers;
-use League\Plates;
+namespace app\views;
+use League\Plates\Engine;
+
+/** @var Engine $this */
 
 $this->layout("master", [
     'title' => "Página Não Encontrada",
