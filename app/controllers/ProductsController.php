@@ -11,7 +11,7 @@ class ProductsController
 {
     /** @var array<string> */
     private static array $allowedExtensionImg = ['png', 'jpg', 'jpeg'];
-    private static string $uploadDir = "app/Static/uploads/";
+    private static string $uploadDir = "app/static/uploads/";
 
     /**
      * @throws exceptionCustom
@@ -151,6 +151,87 @@ class ProductsController
             http_response_code(404);
             header("location: /produtos");
             throw new exceptionCustom("Erro ao deletar o produto: ", 404, $ex);
+        }
+    }
+
+    /**
+     * @throws exceptionCustom
+     */
+    public function alterarProduto(): void
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        /** @var int $prodId */
+        $prodId = intval(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT));
+        $prodNome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
+        $inputPreco = filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $prodPreco = floatval(is_scalar($inputPreco) ? $inputPreco : 0.0);
+        $prodEstoque = filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT) ?: '';
+        try {
+            if (!isset($_SESSION['username'])) {
+                echo json_encode(["code" => 404, "message" => "Você não tem acesso para realizar essa operação"]);
+                throw new invalidArgumentsForProductsException("Sem acesso");
+            }
+            if (!$prodId) {
+                throw new invalidArgumentsForProductsException("ID do produto inválido");
+            }
+            DbController::getConnection();
+            if ($prodPreco == 0.0) {
+                throw new invalidArgumentsForProductsException("Produto sem preço");
+            }
+            $stmt = DbController::getPdo()->prepare("SELECT image FROM products WHERE id_products = ?");
+            $stmt->execute([$prodId]);
+            $produtoAtual = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!$produtoAtual) {
+                throw new invalidArgumentsForProductsException("Produto não encontrado");
+            }
+            $image = $produtoAtual['image'];
+            if (!is_dir(self::$uploadDir)) {
+                mkdir(self::$uploadDir, 0755, true);
+            }
+            if (
+                isset($_FILES['imagem']) &&
+                is_array($_FILES['imagem']) &&
+                $_FILES['imagem']['error'] === UPLOAD_ERR_OK
+            ) {
+                if (!empty($image) && file_exists($image)) {
+                    unlink($image);
+                }
+                /** @var array{tmp_name: string, name: string, error: int} $imagem */
+                $imagem = $_FILES['imagem'];
+                $imgTempPath = $imagem['tmp_name'];
+                $nameImg = $imagem['name'];
+                $extension = strtolower(pathinfo($nameImg, PATHINFO_EXTENSION));
+
+                if (!in_array($extension, self::$allowedExtensionImg)) {
+                    throw new invalidArgumentsForProductsException("Imagem não é válida");
+                }
+
+                $newNameImg = uniqid('img_', true) . '.' . $extension;
+                $imgPath = self::$uploadDir . $newNameImg;
+
+                if (move_uploaded_file($imgTempPath, $imgPath)) {
+                    $image = self::$uploadDir . $newNameImg;
+                }
+            }
+
+            // Atualizar tabela products
+            $sql = "UPDATE products SET name = ?, price = ?, image = ? WHERE id_products = ?";
+            $stmt = DbController::getPdo()->prepare($sql);
+            $stmt->execute([$prodNome, $prodPreco, $image, $prodId]);
+
+            // Atualizar estoque
+            $sql = "UPDATE stock SET quantity = ? WHERE product_id = ?";
+            $stmt = DbController::getPdo()->prepare($sql);
+            $stmt->execute([$prodEstoque, $prodId]);
+            header("location: /produtos");
+            exit;
+        } catch (invalidArgumentsForProductsException $e){
+            throw new exceptionCustom("Erro ao tentar alterar o produto: ", 400,$e);
+        } catch (PDOException $e){
+            Logger::error($e->getMessage(),404,$e);
+            throw new exceptionCustom("Erro ao alterar o produto: ", 400,$e);
         }
     }
 }
