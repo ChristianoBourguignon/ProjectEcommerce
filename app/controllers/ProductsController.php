@@ -25,6 +25,10 @@ class ProductsController
      * @throws exceptionCustom
      * @return array<int, array{id: int,name: string, price: float, image: string, quantity:int}>
      */
+    /**
+     * @throws exceptionCustom
+     * @return array<int,array{id_products: int, name: string, price: float, image: string, quantity: int}>
+     */
     public static function getProdutos(): array
     {
         try {
@@ -42,7 +46,7 @@ class ProductsController
                 where e.quantity > 0;
             ");
             $stmt->execute();
-            /** @var array<int, array{id: int,name: string, price: float, image: string, quantity:int}> $produtos */
+            /** @var array<int, array{id_products: int,name: string, price: float, image: string, quantity:int}> $produtos */
             $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $produtos;
         } catch (\PDOException $ex){
@@ -183,9 +187,10 @@ class ProductsController
             $stmt = DbController::getPdo()->prepare("SELECT image FROM products WHERE id_products = ?");
             $stmt->execute([$prodId]);
             $produtoAtual = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!$produtoAtual) {
+            if (!$produtoAtual || !is_array($produtoAtual)) {
                 throw new invalidArgumentsForProductsException("Produto não encontrado");
             }
+            /** @var array{image: string} $produtoAtual */
             $image = $produtoAtual['image'];
             if (!is_dir(self::$uploadDir)) {
                 mkdir(self::$uploadDir, 0755, true);

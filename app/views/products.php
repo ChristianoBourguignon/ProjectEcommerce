@@ -39,7 +39,7 @@ $username = $_SESSION['username'] ?? null;
                                             class="dropdown-item btn-editar-produto"
                                             data-bs-toggle="modal"
                                             data-bs-target="#alterarProdutoModal"
-                                            data-id='<?= htmlspecialchars((int)$produto['id_products']) ?>'
+                                            data-id='<?= htmlspecialchars((string)$produto['id_products']) ?>'
                                             data-nome="<?= htmlspecialchars($produto['name']) ?>"
                                             data-preco="<?= htmlspecialchars((string)$produto['price']) ?>"
                                             data-estoque="<?= htmlspecialchars((string)$produto['quantity']) ?>"
