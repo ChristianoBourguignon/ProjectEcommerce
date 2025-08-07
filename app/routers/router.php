@@ -1,6 +1,8 @@
 <?php
 namespace App\exceptions;
 
+use App\controllers\Logger;
+
 /**
  * @throws exceptionCustom
  */
@@ -25,6 +27,7 @@ function load(string $controller, string $action ,mixed ...$params):mixed
             return $controllerInstance->$action((object) $_REQUEST);
         }
     } catch (controllerException $e) {
+        Logger::error($e->getMessage(),404,$e);
         throw new exceptionCustom("Erro ao acessar um controller: ",404,$e);
     }
 }
@@ -104,6 +107,9 @@ $router = [
         },
         "/atualizarStatusPedidos" => function (){
             return load("OrdersController","atualizarStatusPedidos");
+        },
+        "/salvarCupom" => function(){
+            return load("CuponsController", "criarCupom");
         }
     ],
 ];
