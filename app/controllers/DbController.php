@@ -92,6 +92,7 @@ class DbController
     CREATE TABLE IF NOT EXISTS cupons (
         id_cupom INT AUTO_INCREMENT PRIMARY KEY,
         code VARCHAR(50) NOT NULL UNIQUE,
+        min_cart_value DECIMAL(10,2) DEFAULT NULL,
         discount_percent DECIMAL(5,2) DEFAULT NULL,
         discount_value DECIMAL(10,2) DEFAULT NULL,
         active TINYINT(1) NOT NULL DEFAULT 1,
