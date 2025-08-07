@@ -17,7 +17,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="preco" class="form-label">Preço</label>
-                        <input type="number" class="form-control" id="preco" name="preco" required>
+                        <input type="text" class="form-control" id="preco" name="preco" step="any" required>
                     </div>
                     <div class="mb-3">
                         <label for="estoque" class="form-label">Estoque</label>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="imagem" class="form-label">Imagem do Produto</label>
-                        <input class="form-control" type="file" id="imagem" name="imagem" accept="image/*" required>
+                        <input class="form-control" type="file" id="imagem" name="imagem" accept="image/*">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -36,7 +36,7 @@
         </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        $(document).ready(function () {
             const modal = document.getElementById('alterarProdutoModal');
             modal.addEventListener('show.bs.modal', function (event) {
                 const button = event.relatedTarget;
@@ -49,6 +49,29 @@
                 modal.querySelector('#nome').value = nome;
                 modal.querySelector('#preco').value = preco;
                 modal.querySelector('#estoque').value = estoque;
+            });
+
+            $('#preco').on('input', function () {
+                let val = $(this).val();
+
+                // Remove vírgulas e tudo que não for número ou ponto
+                val = val.replace(/[^0-9.]/g, '');
+
+                // Permite apenas um ponto
+                let parts = val.split('.');
+                if (parts.length > 2) {
+                    val = parts[0] + '.' + parts[1];
+                }
+
+                $(this).val(val);
+            });
+
+            // Validação opcional ao enviar o formulário
+            $('#formCriarProduto').on('submit', function (e) {
+                let preco = $('#preco').val();
+                if (!/^\d+(\.\d{1,2})?$/.test(preco)) {
+                    e.preventDefault();
+                }
             });
         });
     </script>

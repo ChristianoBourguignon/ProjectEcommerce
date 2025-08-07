@@ -39,7 +39,7 @@ $username = $_SESSION['username'] ?? null;
                                             class="dropdown-item btn-editar-produto"
                                             data-bs-toggle="modal"
                                             data-bs-target="#alterarProdutoModal"
-                                            data-id="<?= htmlspecialchars((string)$produto['id']) ?>"
+                                            data-id='<?= htmlspecialchars((int)$produto['id_products']) ?>'
                                             data-nome="<?= htmlspecialchars($produto['name']) ?>"
                                             data-preco="<?= htmlspecialchars((string)$produto['price']) ?>"
                                             data-estoque="<?= htmlspecialchars((string)$produto['quantity']) ?>"
@@ -48,7 +48,7 @@ $username = $_SESSION['username'] ?? null;
                                     </a>
                                     <li>
                                         <form action="/excluirProduto" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este produto?')" style="margin: 0;">
-                                            <input type="hidden" name="product_id" value="<?= $produto['id'] ?>">
+                                            <input type="hidden" name="product_id" value='<?= $produto['id_products'] ?>'>
                                             <button type="submit" class="dropdown-item text-danger" style="background: none; border: none;">Excluir</button>
                                         </form>
                                     </li>
@@ -58,7 +58,7 @@ $username = $_SESSION['username'] ?? null;
 
                         <button
                                 type="button"
-                                data-id="<?= htmlspecialchars((string)$produto['id']) ?>"
+                                data-id='<?= htmlspecialchars((string)$produto['id_products']) ?>'
                                 data-nome="<?= htmlspecialchars($produto['name']) ?>"
                                 data-preco="<?= htmlspecialchars((string)$produto['price']) ?>"
                                 data-estoque="1"

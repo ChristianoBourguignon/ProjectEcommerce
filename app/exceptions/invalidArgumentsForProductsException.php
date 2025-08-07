@@ -1,8 +1,7 @@
 <?php
 
 namespace App\exceptions;
-
-use http\Exception\RuntimeException;
+use RuntimeException;
 
 class invalidArgumentsForProductsException extends RuntimeException
 {

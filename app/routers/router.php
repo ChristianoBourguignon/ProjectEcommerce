@@ -110,6 +110,9 @@ $router = [
         },
         "/salvarCupom" => function(){
             return load("CuponsController", "criarCupom");
+        },
+        "/alterarProduto" => function(){
+            return load("ProductsController", "alterarProduto");
         }
     ],
 ];
