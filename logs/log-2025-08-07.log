@@ -1,0 +1,80 @@
+
+2025-08-07 12:46:17- 404 - Erro ao criar o cupom:  
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 12:46:29- 404 - Erro ao criar o cupom:  
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 12:47:11- 404 - Erro ao criar o cupom:  
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 12:50:34- 404 - Erro ao criar o cupom:  
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 12:50:47- 404 - Erro ao criar o cupom:  
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 12:51:57- 404 - Erro ao criar o cupom:  
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 13:00:50 - ERROR - Data de validade, deve ser maior que a data atual
+
+2025-08-07 13:02:29- 404 - Data de validade, deve ser maior que a data atual 
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 13:07:56- 404 - Data de validade, deve ser maior que a data atual 
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 13:08:35- 404 - Data de validade, deve ser maior que a data atual 
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 13:08:44- 404 - Data de validade, deve ser maior que a data atual 
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
+2025-08-07 13:08:58- 404 - Data de validade, deve ser maior que a data atual 
+ App\exceptions\cuponsExceptions: Data de validade, deve ser maior que a data atual in /var/www/html/app/controllers/CuponsController.php:59
+Stack trace:
+#0 /var/www/html/App/routers/router.php(25): App\controllers\CuponsController->criarCupom(Object(stdClass))
+#1 /var/www/html/App/routers/router.php(109): App\exceptions\load('CuponsControlle...', 'criarCupom')
+#2 /var/www/html/index.php(33): App\exceptions\{closure}()
+#3 {main}
