@@ -1,4 +1,4 @@
-
+let cupomAplicado;
 let totalProducts = 0;
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -76,11 +76,16 @@ function atualizarFrete(subtotal) {
     atualizarTotal();
 }
 function atualizarTotal(){
-    let frete = parseFloat($('#frete').val());
+    let frete = parseFloat($('#frete').val().replace(',', '.'));
     if (isNaN(frete) || frete < 0) {
         frete = 0.0;
     }
-    let totalPedido = totalProducts + frete;
+    let desconto = 0;
+    if (cupomAplicado) {
+        desconto = calcularDesconto(cupomAplicado);
+        if (desconto > totalProducts) desconto = totalProducts;
+    }
+    let totalPedido = totalProducts - desconto + frete;
     $('#total').val(totalPedido.toFixed(2).replace('.',','));
 }
 
@@ -113,12 +118,53 @@ function enviarDados(formObjectJson) {
     });
 }
 
+function aplicarCupom(cupom) {
+    cupomAplicado = cupom;
+    const desconto = calcularDesconto(cupom);
+
+    if (desconto <= 0) {
+        showModal(400, "Cupom inválido para o subtotal atual.");
+        return;
+    }
+
+    $('#cupomNome').text(cupom.code);
+    $('#cupomInput').val(cupom.code);
+    $('#cupomAtivo').removeClass('d-none');
+    atualizarTotal();
+    showModal(200, `Cupom ${cupom.code} aplicado com sucesso!`);
+}
+
+function removerCupom() {
+    cupomAplicado = null;
+    $('#cupomAtivo').addClass('d-none');
+    atualizarTotal();
+    showModal(200, "Cupom removido.");
+}
+
+function calcularDesconto(cupom) {
+    if (cupom.discount_percent && cupom.discount_percent > 0) {
+        return totalProducts * (cupom.discount_percent / 100);
+    } else if (cupom.discount_value && cupom.discount_value > 0) {
+        return cupom.discount_value;
+    }
+    return 0;
+}
+
 $(function () {
     renderizarCarrinhoPreview();
     atualizarTotal()
+
+    $('.aplicar-cupom').on('click', function () {
+        const cupom = JSON.parse($(this).attr('data-cupom'));
+        if (cupom.min_cart_value && totalProducts < parseFloat(cupom.min_cart_value)) {
+            showModal(400, `Este cupom requer um mínimo de R$ ${parseFloat(cupom.min_cart_value).toFixed(2).replace('.', ',')}.`);
+            return;
+        }
+        aplicarCupom(cupom);
+    });
+
     $('#zipcode').on('input', function () {
         let cep = $(this).val().replace(/\D/g, '');
-
         if (cep.length === 8) {
             $.ajax({
                 url: `https://viacep.com.br/ws/${cep}/json/`,
