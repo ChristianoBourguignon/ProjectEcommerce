@@ -105,12 +105,13 @@ class ProductsController
             $sql = "INSERT INTO stock (product_id, quantity) VALUES (?, ?)";
             $stmt = DbController::getPdo()->prepare($sql);
             $stmt->execute([$prodId, $prodEstoque]);
-
-            http_response_code(200);
-            header("Location: /produtos");
+            Controller::view("products");
             exit;
-        } catch (\PDOException | invalidArgumentsForProductsException $ex){
+        } catch (invalidArgumentsForProductsException $ex){
             throw new exceptionCustom("Erro ao criar o produto: ", 404, $ex);
+        } catch (PDOException $e){
+            Logger::error($e->getMessage(),404,$e);
+            throw new exceptionCustom("Erro ao obter itens do pedido: ", 400,$e);
         }
     }
 
@@ -147,7 +148,7 @@ class ProductsController
             Controller::view("products");
             exit;
         } catch (PDOException $ex) {
-            http_response_code($ex->getCode());
+            http_response_code(404);
             Controller::view("products");
             throw new exceptionCustom("Erro ao deletar o produto: ", 404, $ex);
         }

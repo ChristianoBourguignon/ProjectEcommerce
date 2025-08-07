@@ -48,6 +48,7 @@ class OrdersController
          *     state: string,
          *     frete: string,
          *     total: string,
+         *     cupom: string,
          *     cart: array<array{
          *         id: int,
          *         name: string,
@@ -149,6 +150,7 @@ class OrdersController
      *     state: string,
      *     frete: float,
      *     total: string,
+     *     cupom: string,
      *     cart: array<array{
      *         id: int,
      *         name: string,
@@ -173,18 +175,20 @@ class OrdersController
         $number = $formData['number'];
         $complement = $formData['complement'];
         $neighborhood = $formData['neighborhood'];
+        $cupom = $formData['cupom'] ?? null;
         $city = $formData['city'];
         $state = $formData['state'];
         if(empty($userId)){
             throw new ordersFinishException("Usuário não encontrado.");
         }
-
         try {
             DbController::getPdo()->beginTransaction();
             if(empty($zipcode) || empty($street) || empty($city) || empty($state)){
                 echo json_encode(["code"=>404,"message"=>"Erro ao obter o endereço do cliente para criar o pedido"]);
                 throw new ordersFinishException("Não obtido dados do endereço do cliente.");
             }
+
+            $cupomId = CuponsController::obterIdCupom($cupom);
             $stmtOrder = DbController::getPdo()->prepare("
                 INSERT INTO orders (
                     user_id,
@@ -236,11 +240,13 @@ class OrdersController
         } catch (ordersFinishException $e) {
             DbController::getPdo()->rollBack();
             echo json_encode(["code"=>$e->getCode(),"message"=>"Erro ao criar o pedido: " . $e->getMessage()]);
-            throw new exceptionCustom("Erro ao criar o pedido: ",400,$e);
+            Logger::error($e->getMessage(),404,$e);
+            exit;
         } catch (Exception $e) {
             DbController::getPdo()->rollBack();
             echo json_encode(["code"=>$e->getCode(),"message"=>"Erro no pedido: ".$e->getMessage()]);
-            throw new exceptionCustom("Erro ao criar o pedido: ",400,$e);
+            Logger::error($e->getMessage(),404,$e);
+            exit;
         }
     }
 
@@ -285,9 +291,13 @@ class OrdersController
                 $stmtUpdate = DbController::getPdo()->prepare("UPDATE stock SET quantity = quantity - ?, update_in = NOW() WHERE id_stock = ?");
                 $stmtUpdate->execute([$quantity, $id_stock]);
             }
-        } catch (PDOException | ordersFinishException $ex){
+        } catch (ordersFinishException $ex){
             echo json_encode(["code"=>$ex->getCode(),"message"=>"Erro ao criar o pedido"]);
-            throw new exceptionCustom("Erro ao criar o pedido: ",400,$ex);
+            Logger::error($ex->getMessage(),404,$ex);
+            exit;
+        } catch (PDOException $ex){
+            echo json_encode(["code"=>$ex->getCode(),"message"=>"Erro ao criar o pedido"]);
+            throw new exceptionCustom("Erro ao criar o pedido: ",404,$ex);
         }
     }
 
@@ -326,10 +336,11 @@ class OrdersController
                 ];
             }
             return $orders;
-        } catch (PDOException $ex){
-            throw new exceptionCustom("Erro ao obter os pedidos: ", 400,$ex);
+    }  catch (PDOException $e){
+            Logger::error($e->getMessage(),404,$e);
+            throw new exceptionCustom("Erro na conexão: ", 400,$e);
         } catch (ordersFinishException $ex){
-            throw new exceptionCustom("Erro ao obter o id do usuario: ", 404, $ex);
+            return [];
         }
     }
 
@@ -397,10 +408,13 @@ class OrdersController
             http_response_code(200);
             echo json_encode(["code"=>200,"products"=>$items]);
             return $items;
-        } catch (PDOException | exceptionCustom $e) {
+        } catch (exceptionCustom $e) {
             http_response_code(404);
             echo json_encode(["code"=>$e->getCode(),"message"=>"Erro ao obter o produto do pedido: " . $e->getMessage()]);
             throw new exceptionCustom("Erro ao obter o produto: ", 404, $e);
+        } catch (PDOException $e){
+            Logger::error($e->getMessage(),404,$e);
+            throw new exceptionCustom("Erro na conexão: ", 400,$e);
         }
     }
 
@@ -409,7 +423,6 @@ class OrdersController
      */
     static function atualizarStatusPedidos():void
     {
-//        $data_orders = json_decode(filter_input(INPUT_POST,'orders'), true);
         $json = filter_input(INPUT_POST, 'orders');
 
         if (!is_string($json)) {
@@ -426,6 +439,9 @@ class OrdersController
         $pedidos = [];
 
         foreach ($data_orders as $pedido) {
+            if (!is_array($pedido) || !isset($pedido['order_id']) || !isset($pedido['status'])) {
+                continue;
+            }
             /** @var int $order_id */
             $order_id = filter_var($pedido['order_id'], FILTER_SANITIZE_NUMBER_INT);
             /** @var string $status */
@@ -463,10 +479,13 @@ class OrdersController
             DbController::getPdo()->exec($sql);
             echo json_encode(["code" => 200, "message" => count($pedidos) . " Pedidos atualizados."]);
             exit;
-        } catch (PDOException | ordersFinishException $e) {
+        } catch (ordersFinishException $e) {
             http_response_code(404);
             echo $e->getMessage();
             throw new exceptionCustom("Erro ao atualizar status do pedido: ",404,$e);
+        } catch (PDOException $e){
+            Logger::error($e->getMessage(),404,$e);
+            throw new exceptionCustom("Erro na conexão: ", 400,$e);
         }
     }
 }

@@ -23,8 +23,8 @@ class Controller
             $templates = new Engine($viewsPath);
             echo $templates->render($view, $data);
         } catch (viewsControllerException $e) {
+            Logger::error($e->getMessage(),404,$e);
             throw new exceptionCustom("Erro ao acessar a view: ",404,$e);
-
         }
     }
 }

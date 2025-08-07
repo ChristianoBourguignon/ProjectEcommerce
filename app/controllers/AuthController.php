@@ -9,7 +9,6 @@ use PDO;
 
 class AuthController
 {
-
     public function criarConta():void {
         $usercpf = filter_input(INPUT_POST, 'registerCpf', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? null;
         $username = filter_input(INPUT_POST, 'registerName', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? null;
@@ -42,10 +41,11 @@ class AuthController
             $_SESSION['userid'] = $userid;
             $this->setCookie("username",$_SESSION['username']);
             $this->setCookie("userid",$_SESSION['userid']);
-            http_response_code(200);
-            header("location: /produtos");
+            Controller::view("products");
+            exit;
         }catch (Exception | invalidParametersAuthException $ex){
-            throw new exceptionCustom("Erro ao acessar a conta: ",404,$ex);
+            Logger::error($ex->getMessage(),404,$ex);
+            throw new exceptionCustom("Erro ao criar a conta: ",404,$ex);
         }
     }
     /**
@@ -75,13 +75,17 @@ class AuthController
             $_SESSION['userid'] = $user['id_user'];
             $this->setCookie("username",$user['name']);
             $this->setCookie("userid",$user['id_user']);
-            header("Location: /produtos");
+            Controller::view("products");
             exit;
-        } catch (Exception | invalidParametersAuthException $ex){
+        } catch (invalidParametersAuthException $ex){
+            Logger::error($ex->getMessage(),404,$ex);
             throw new exceptionCustom("Erro ao acessar a conta: ",404,$ex);
         }
     }
 
+    /**
+     * @throws exceptionCustom
+     */
     public function deslogar():void
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -95,7 +99,7 @@ class AuthController
         }
         $_SESSION = [];
         session_destroy();
-        header("Location: /");
+        Controller::view("home");
         exit;
     }
 
