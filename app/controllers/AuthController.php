@@ -41,7 +41,7 @@ class AuthController
             $_SESSION['userid'] = $userid;
             $this->setCookie("username",$_SESSION['username']);
             $this->setCookie("userid",$_SESSION['userid']);
-            Controller::view("products");
+            header("location: /produtos");
             exit;
         }catch (Exception | invalidParametersAuthException $ex){
             Logger::error($ex->getMessage(),404,$ex);
@@ -75,7 +75,7 @@ class AuthController
             $_SESSION['userid'] = $user['id_user'];
             $this->setCookie("username",$user['name']);
             $this->setCookie("userid",$user['id_user']);
-            Controller::view("products");
+            header("location: /produtos");
             exit;
         } catch (invalidParametersAuthException $ex){
             Logger::error($ex->getMessage(),404,$ex);
@@ -99,7 +99,7 @@ class AuthController
         }
         $_SESSION = [];
         session_destroy();
-        Controller::view("home");
+        header("location: /");
         exit;
     }
 
