@@ -1,10 +1,7 @@
 <?php
+use League\Plates;
 
-namespace app\views;
-use League\Plates\Engine;
-
-/** @var Engine $this */
-
+/** @var Plates\Template\Template $this */
 $this->layout("master", [
     'title' => "Página Não Encontrada",
     'description' => "Erro 404 - Página não encontrada"

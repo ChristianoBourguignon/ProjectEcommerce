@@ -324,4 +324,4 @@ $this->layout("master", [
 
 </style>
 
-<?php $this->stop(); ?> 
+<?php $this->stop(); ?>

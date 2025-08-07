@@ -48,7 +48,7 @@ class OrdersController
          *     state: string,
          *     frete: string,
          *     total: string,
-         *     cupom: string,
+         *     cupom?: string,
          *     cart: array<array{
          *         id: int,
          *         name: string,
@@ -150,7 +150,7 @@ class OrdersController
      *     state: string,
      *     frete: float,
      *     total: string,
-     *     cupom: string,
+     *     cupom?: string,
      *     cart: array<array{
      *         id: int,
      *         name: string,
@@ -175,7 +175,7 @@ class OrdersController
         $number = $formData['number'];
         $complement = $formData['complement'];
         $neighborhood = $formData['neighborhood'];
-        $cupom = $formData['cupom'] ?? null;
+        $cupom = $formData['cupom'] ?? '';
         $city = $formData['city'];
         $state = $formData['state'];
         if(empty($userId)){

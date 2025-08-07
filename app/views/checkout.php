@@ -1,11 +1,8 @@
 <?php
-
-namespace app\views;
 use App\controllers\CuponsController;
-use League\Plates\Engine;
+use League\Plates;
 
-/** @var Engine $this */
-
+/** @var Plates\Template\Template $this */
 $this->layout("master", [
     'title' => "Finalizar Compra",
     'description' => "Revise seu pedido e informe o endereço de entrega."

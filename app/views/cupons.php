@@ -1,11 +1,8 @@
 <?php
-
-namespace app\views;
 use App\controllers\CuponsController;
-use League\Plates\Engine;
+use League\Plates;
 
-/** @var Engine $this */
-
+/** @var Plates\Template\Template $this */
 $this->layout("master", [
     'title' => "Gerenciar Cupons",
     'description' => "Visualize e crie cupons com regras específicas e validade."

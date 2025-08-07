@@ -1,10 +1,8 @@
 <?php
-
-namespace app\views;
-use League\Plates\Engine;
+use League\Plates;
 use App\controllers\ProductsController;
 
-/** @var Engine $this */
+/** @var Plates\Template\Template $this */
 $this->layout("master", [
     'title' => "Produtos",
     'description' => "Aqui você encontrará todos os produtos disponível."

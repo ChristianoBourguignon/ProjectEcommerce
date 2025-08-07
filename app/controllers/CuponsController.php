@@ -42,18 +42,40 @@ class CuponsController
             echo json_encode(["code"=> 404, "message"=>"Dados comprometidos"]);
             exit;
         }
-        $expiresAt = DateTime::createFromFormat('Y-m-d', (string)$data_cupons['expires_at']);
+        /** @var array<string, mixed> $data_cupons */
+        $expiresAtValue = $data_cupons['expires_at'] ?? '';
+        /** @var string $expiresAtValue */
+        $expiresAt = DateTime::createFromFormat('Y-m-d', (string)$expiresAtValue);
         if ($expiresAt === false) {
             throw new cuponsExceptions("Data de validade inválida");
         }
         $expiresAt = $expiresAt->format('Y-m-d');
+        
+        $codeValue = $data_cupons["code"] ?? '';
+        $discountPercentValue = $data_cupons["discount_percent"] ?? 0.0;
+        $discountValueValue = $data_cupons["discount_value"] ?? 0.0;
+        $minCartValueValue = $data_cupons["min_cart_value"] ?? 0.0;
+        $activeValue = $data_cupons['active'] ?? false;
+        
+        /** @var string $codeValue */
+        /** @var float $discountPercentValue */
+        /** @var float $discountValueValue */
+        /** @var float $minCartValueValue */
+        /** @var bool $activeValue */
+        
+        $code = (string)$codeValue;
+        $discount_percent = (float)$discountPercentValue;
+        $discount_value = (float)$discountValueValue;
+        $min_cart_value = (float)$minCartValueValue;
+        $active = (bool)$activeValue;
+        
         $cupom = [
-            "code" => (string)($data_cupons["code"] ?? ''),
-            "discount_percent" => floatval($data_cupons["discount_percent"] ?? 0.0),
-            "discount_value" => floatval($data_cupons["discount_value"] ?? 0.0),
-            "min_cart_value" => floatval($data_cupons["min_cart_value"] ?? 0.0),
+            "code" => $code,
+            "discount_percent" => $discount_percent,
+            "discount_value" => $discount_value,
+            "min_cart_value" => $min_cart_value,
             "expires_at"=> $expiresAt,
-            "active" => boolval($data_cupons['active'] ?? false)
+            "active" => $active
         ];
         $now = new DateTime();
         $now = $now->format('Y-m-d');
@@ -104,11 +126,11 @@ class CuponsController
             DbController::getConnection();
             $stmt = DbController::getPdo()->prepare("
                 SELECT * FROM cupons
-                WHERE expires_at < NOW() AND active = true
+                WHERE expires_at > NOW() AND active = true
                 order by created_at limit 10
             ");
             $stmt->execute();
-            /* @var array<int,array{id: int,code: string, discount_percent: float, discount_value: float, min_cart_value: float, expires_at: string,active:bool,created_at: string} $cupons*/
+            /** @var array<int,array{id: int,code: string, discount_percent: float, discount_value: float, min_cart_value: float, expires_at: string,active:bool,created_at: string}> $cupons*/
             $cupons = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $cupons;
         } catch (cuponsExceptions $e) {

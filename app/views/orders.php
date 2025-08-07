@@ -1,12 +1,9 @@
 <?php
-
-namespace app\views;
 use App\controllers\OrdersController;
 use App\exceptions\exceptionCustom;
-use League\Plates\Engine;
+use League\Plates;
 
-/** @var Engine $this */
-
+/** @var Plates\Template\Template $this */
 $this->layout("master", [
     'title' => "Meus Pedidos",
     'description' => "Acompanhe e gerencie seus pedidos."
@@ -15,7 +12,7 @@ $this->layout("master", [
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 }
-$userid = isset($_SESSION['userid']) ? (int)$_SESSION['userid'] : 0;
+$userid = isset($_SESSION['userid']) && is_numeric($_SESSION['userid']) ? (int)$_SESSION['userid'] : 0;
 $orders = OrdersController::getPedidosPorUsuario($userid);
 ?>
 
