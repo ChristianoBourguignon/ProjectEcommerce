@@ -1,10 +1,18 @@
 <?php
+
+namespace app\views;
+use App\controllers\CuponsController;
+use League\Plates\Engine;
+
+/** @var Engine $this */
+
 $this->layout("master", [
     'title' => "Finalizar Compra",
     'description' => "Revise seu pedido e informe o endereço de entrega."
 ]);
 ?>
 <?php $this->start('body'); ?>
+<?php $coupons = CuponsController::obterCupons() ?>
 <main class="container my-5">
     <h2 class="mb-4">Finalizar Compra</h2>
     <div class="card mb-4">
@@ -17,6 +25,33 @@ $this->layout("master", [
     </div>
 
     <form id="checkoutForm">
+        <?php if (!empty($coupons)) : ?>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Cupons Disponíveis</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <?php foreach ($coupons as $cupom): ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>
+                            <strong><?= htmlspecialchars($cupom['code']) ?></strong> -
+                            <?= $cupom['discount_percent'] ? "{$cupom['discount_percent']}% off" : "R$ {$cupom['discount_value']}" ?>
+                            <?php if ($cupom['min_cart_value']) : ?>
+                                <small class="text-muted">(mínimo R$ <?= number_format($cupom['min_cart_value'], 2, ',', '.') ?>)</small>
+                            <?php endif; ?>
+                        </span>
+                                <a
+                                        class="btn btn-sm btn-primary aplicar-cupom"
+                                        data-cupom='<?= json_encode($cupom) ?>'>
+                                    Aplicar
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="row g-3">
             <div class="col-md-4">
                 <label for="zipcode" class="form-label">CEP</label>
@@ -60,7 +95,13 @@ $this->layout("master", [
             <div class="col-md-4">
                 <label for="total" class="form-label">Total (R$)</label>
                 <input type="text" step="0.01" class="form-control" readonly id="total" name="total" required>
+                <div id="cupomAtivo" class="alert alert-success d-none mt-3">
+                    Cupom <strong id="cupomNome"></strong> aplicado!
+                    <button type="button" class="btn btn-sm btn-link text-danger" onclick="removerCupom()">Remover</button>
+                </div>
+                <input type="hidden" name="cupom" id="cupomInput">
             </div>
+
         </div>
 
         <div class="text-end mt-4">
