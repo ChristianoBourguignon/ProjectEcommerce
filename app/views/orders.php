@@ -22,7 +22,7 @@ $orders = OrdersController::getPedidosPorUsuario($_SESSION['userid']) ?? [];
 
     <?php if(empty($orders)): ?>
         <p>Você não tem pedidos ainda.</p>
-    <?php else: ?>
+    <?php else: var_dump($orders);?>
         <form id="formPedidos" method="POST" action="/salvarStatusPedidos">
             <table class="table table-striped">
                 <thead>

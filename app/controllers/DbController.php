@@ -9,36 +9,38 @@ class DbController
 {
     private static string $host = "";
     private static string $dbname = "";
-    private static string $port = "";
+    private static int $port = 0000;
     private static string $username = "";
     private static string $password = "";
     private static ?PDO $pdo = null;
 
-    private static function env(string $key): mixed
+    private static function env(string $key): string|int
     {
-        return $_ENV[$key] ?? $_SERVER[$key] ?? null;
+        $envValue = $_ENV[$key] ?? $_SERVER[$key] ?? "";
+        if (!is_string($envValue) && !is_int($envValue)) {return "";}
+        return $envValue;
     }
 
     public static function getPdo(): PDO
     {
-        return self::$pdo;
+        return self::getConnection() ?? throw new \RuntimeException("Não foi possível estabelecer conexão com o banco de dados.");
     }
 
     /**
      * @throws exceptionCustom
      */
-    public static function getConnection(): PDO
+    public static function getConnection(): PDO|null
     {
         try {
             if (self::$pdo instanceof PDO) {
                 return self::$pdo;
             }
 
-            self::$host = self::env('DB_HOST');
-            self::$port = self::env('DB_PORT');
-            self::$dbname = self::env('DB_NAME');
-            self::$username = self::env('DB_USER');
-            self::$password = self::env('DB_PASS');
+            self::$host = (string) self::env('DB_HOST');
+            self::$port = (int) self::env('DB_PORT');
+            self::$dbname = (string) self::env('DB_NAME');
+            self::$username = (string) self::env('DB_USER');
+            self::$password = (string) self::env('DB_PASS');
             $dsn = "mysql:host=" . self::$host . ";port=" . self::$port . ";dbname=" . self::$dbname . ";charset=utf8mb4";
             self::$pdo = new PDO($dsn, self::$username, self::$password, [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,

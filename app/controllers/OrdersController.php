@@ -2,9 +2,7 @@
 
 namespace App\controllers;
 
-use _PHPStan_5878035a0\Nette\Utils\Json;
 use App\exceptions\exceptionCustom;
-use App\exceptions\invalidParametersAuthException;
 use App\exceptions\ordersFinishException;
 use Exception;
 use PDO;
@@ -35,14 +33,38 @@ class OrdersController
             session_start();
         }
 
-        $formData = json_decode(filter_input(INPUT_POST,'formCheckout'),true);
-        if(empty($formData)){
-            echo json_encode(["code"=>404,"message"=>"Formulário com dados ausentes está vazio"]);
-            exit;
+        $formDataRaw = filter_input(INPUT_POST, 'formCheckout');
+        if (!is_string($formDataRaw)) {
+            throw new exceptionCustom("Erro ao receber o JSON bruto", 400, new ordersFinishException("Dados ausentes ou inválidos"));
         }
-        $ids = array_map('intval', array_column($formData['cart'], 'id'));
+        /**
+         * @var array{
+         *     zipcode: string,
+         *     street: string,
+         *     number: string,
+         *     complement: string,
+         *     neighborhood: string,
+         *     city: string,
+         *     state: string,
+         *     frete: string,
+         *     total: string,
+         *     cart: array<array{
+         *         id: int,
+         *         name: string,
+         *         price: float,
+         *         stock: int,
+         *         image: string,
+         *         max_estoque: int
+         *     }>
+         * } $formData
+         */
+
+        $formData = json_decode($formDataRaw, true);
+
 
         try {
+            $ids = array_map('intval', array_column($formData['cart'], 'id'));
+
             DbController::getConnection();
             $ids_separados = implode(',', array_fill(0, count($ids), '?'));
             if (empty($ids)) {
@@ -61,12 +83,22 @@ class OrdersController
 
             $productHashMap = [];
             foreach ($products as $p) {
+                /** @var array{id_products: int,name: string,price: float,quantity: int,stock: int,image: string ,max_estoque: int} $p */
                 $productHashMap[$p['id_products']] = $p;
             }
             $total = 0;
             $errors = [];
 
             foreach ($formData['cart'] as $item) {
+                /** @var array{
+                 * id: int,
+                 * name: string,
+                 * price: float,
+                 * stock: int,
+                 * image: string,
+                 * max_estoque: int
+                 * } $item
+                 */
                 $cart_item_id = intval($item['id']);
                 $cart_item_qtnd = intval($item['stock']);
                 $cart_item_price = floatval($item['price']);
@@ -101,29 +133,48 @@ class OrdersController
             echo json_encode(["code"=>404,"message"=>"Erro ao finalizar a compra."]);
             throw new exceptionCustom("Erro ao finalizar a compra", 404,$ex);
         }catch (ordersFinishException $ex){
-            echo json_encode(["code"=>404,"message"=>"Erro ao obter os ids: $ex"]);
+            echo json_encode(["code"=>$ex->getCode(),"message"=>$ex->getMessage()]);
             throw new exceptionCustom("Erro ao obter os ids: ", 404,$ex);
         }
     }
 
     /**
+     * @param array{
+     *     zipcode: string,
+     *     street: string,
+     *     number: string,
+     *     complement: string,
+     *     neighborhood: string,
+     *     city: string,
+     *     state: string,
+     *     frete: float,
+     *     total: string,
+     *     cart: array<array{
+     *         id: int,
+     *         name: string,
+     *         price: float,
+     *         stock: int,
+     *         image: string,
+     *         max_estoque: int
+     *     }>
+     * } $formData
      * @throws exceptionCustom
      */
-    function criarPedido(Array $formData, float $total): void {
+    function criarPedido(array $formData, float $total): void {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
         $userId = $_SESSION['userid'] ?? null;
         $cupomId = null;
         $orderDate = date('Y-m-d H:i:s');
-        $frete = $formData['frete'] ?? null;
-        $zipcode = $formData['zipcode'] ?? null;
-        $street = $formData['street'] ?? null;
-        $number = $formData['number'] ?? null;
-        $complement = $formData['complement'] ?? null;
-        $neighborhood = $formData['neighborhood'] ?? null;
-        $city = $formData['city'] ?? null;
-        $state = $formData['state'] ?? null;
+        $frete = $formData['frete'];
+        $zipcode = $formData['zipcode'];
+        $street = $formData['street'];
+        $number = $formData['number'];
+        $complement = $formData['complement'];
+        $neighborhood = $formData['neighborhood'];
+        $city = $formData['city'];
+        $state = $formData['state'];
         if(empty($userId)){
             throw new ordersFinishException("Usuário não encontrado.");
         }
@@ -136,19 +187,19 @@ class OrdersController
             }
             $stmtOrder = DbController::getPdo()->prepare("
                 INSERT INTO orders (
-                                    user_id,
-                                    cupom_id,
-                                    total_price,
-                                    order_date,
-                                    shipping_price,
-                                    address_street,
-                                    address_number,
-                                    address_complement,
-                                    address_neighborhood,
-                                    address_city,
-                                    address_state,
-                                    address_zipcode
-                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+                    user_id,
+                    cupom_id,
+                    total_price,
+                    order_date,
+                    shipping_price,
+                    address_street,
+                    address_number,
+                    address_complement,
+                    address_neighborhood,
+                    address_city,
+                    address_state,
+                    address_zipcode
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
             $stmtOrder->execute([
                 $userId,
                 $cupomId,
@@ -184,16 +235,24 @@ class OrdersController
             $this->descontarEstoque($formData['cart']);
         } catch (ordersFinishException $e) {
             DbController::getPdo()->rollBack();
-            echo json_encode(["code"=>404,"message"=>"Erro ao criar o pedido: " . $e->getMessage()]);
+            echo json_encode(["code"=>$e->getCode(),"message"=>"Erro ao criar o pedido: " . $e->getMessage()]);
             throw new exceptionCustom("Erro ao criar o pedido: ",400,$e);
         } catch (Exception $e) {
             DbController::getPdo()->rollBack();
-            echo json_encode(["code"=>404,"message"=>"Erro no pedido: ".$e->getMessage()]);
+            echo json_encode(["code"=>$e->getCode(),"message"=>"Erro no pedido: ".$e->getMessage()]);
             throw new exceptionCustom("Erro ao criar o pedido: ",400,$e);
         }
     }
 
     /**
+     * @param array<array{
+     *     id: int,
+     *     name: string,
+     *     price: float,
+     *     stock: int,
+     *     image: string,
+     *     max_estoque: int
+     * }> $cart
      * @throws exceptionCustom
      */
     function descontarEstoque(array $cart): void {
@@ -203,33 +262,37 @@ class OrdersController
                 throw new ordersFinishException("Itens do carrinho não foram enviados com sucesso");
             }
             DbController::getConnection();
-        foreach ($cart as $item) {
-            $product_id = intval($item['id']);
-            $quantity = intval($item['stock']);
-            $stmt = DbController::getPdo()->prepare("SELECT id_stock, quantity FROM stock WHERE product_id = ?");
-            $stmt->execute([$product_id]);
-            $stock = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if (!$stock) {
-                throw new ordersFinishException("Não foi possível descontar o estoque do produto $product_id.");
+            foreach ($cart as $item) {
+                $product_id = intval($item['id']);
+                $quantity = intval($item['stock']);
+                $stmt = DbController::getPdo()->prepare("SELECT id_stock, quantity FROM stock WHERE product_id = ?");
+                $stmt->execute([$product_id]);
+                /* @var array{id_stock: int, quantity: int} $stock */
+                $stock = $stmt->fetch(PDO::FETCH_ASSOC);
+                if (!$stock || !is_array($stock)) {
+                    throw new ordersFinishException("Não foi possível descontar o estoque do produto $product_id.");
+                }
+                /* @var int $estoqueAtual */
+                $estoqueAtual = $stock['quantity'];
+                $id_stock = $stock['id_stock'];
+                if ($estoqueAtual < $quantity) {
+                    if(is_scalar($estoqueAtual)) {
+                        throw new ordersFinishException("Estoque insuficiente para o produto ID $product_id. Em estoque: $estoqueAtual, solicitado: $quantity");
+                    } else {
+                        throw new ordersFinishException("Estoque insuficiente para realizar o pedido");
+                    }
+                }
+                $stmtUpdate = DbController::getPdo()->prepare("UPDATE stock SET quantity = quantity - ?, update_in = NOW() WHERE id_stock = ?");
+                $stmtUpdate->execute([$quantity, $id_stock]);
             }
-
-            $estoqueAtual = intval($stock['quantity']);
-            $id_stock = $stock['id_stock'];
-
-            if ($estoqueAtual < $quantity) {
-                throw new ordersFinishException("Estoque insuficiente para o produto ID $product_id. Em estoque: $estoqueAtual, solicitado: $quantity");
-            }
-            $stmtUpdate = DbController::getPdo()->prepare("UPDATE stock SET quantity = quantity - ?, update_in = NOW() WHERE id_stock = ?");
-            $stmtUpdate->execute([$quantity, $id_stock]);
-        }
         } catch (PDOException | ordersFinishException $ex){
-            echo json_encode(["code"=>400,"message"=>"Erro ao criar o pedido"]);
+            echo json_encode(["code"=>$ex->getCode(),"message"=>"Erro ao criar o pedido"]);
             throw new exceptionCustom("Erro ao criar o pedido: ",400,$ex);
         }
     }
 
     /**
+     * @return array<int, array{order_id:int, order_status:string, order_date:string, total_price:float}>
      * @throws exceptionCustom
      */
     static function getPedidosPorUsuario(int $userid): array{
@@ -250,7 +313,19 @@ class OrdersController
             ;
             ");
             $stmt->execute([$userid]);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            /* @var array<int, array{order_id:int, order_status:string, order_date:string, total_price:float}> $pedidos */
+            $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $orders = [];
+            foreach ($pedidos as $order) {
+                /** @var array{order_id:string, order_status:string, order_date:string, total_price:string} $order */
+                $orders[] = [
+                    'order_id' => (int)$order['order_id'],
+                    'order_status' => (string)$order['order_status'],
+                    'order_date' => (string)$order['order_date'],
+                    'total_price' => (float)$order['total_price'],
+                ];
+            }
+            return $orders;
         } catch (PDOException $ex){
             throw new exceptionCustom("Erro ao obter os pedidos: ", 400,$ex);
         } catch (ordersFinishException $ex){
@@ -259,9 +334,22 @@ class OrdersController
     }
 
     /**
+     * @return array<int, array{
+     * order_id:int,
+     * order_status:string,
+     * order_date:string,
+     * total_price:float,
+     * shipping_price:float,
+     * item_id:int,
+     * product_id:int,
+     * item_quantity:int,
+     * item_unit_price:float,
+     * product_name:string,
+     * product_image:string
+     * }>
      * @throws exceptionCustom
      */
-    static function getItemsPedido(): Json
+    static function getItemsPedido(): array
     {
         $order_id = filter_input(INPUT_POST,'order_id',FILTER_SANITIZE_NUMBER_INT);
         try {
@@ -285,14 +373,33 @@ class OrdersController
                 INNER JOIN products p ON io.product_id = p.id_products
                 WHERE o.id_orders = ?
             ";
-
             $stmt = DbController::getPdo()->prepare($sql);
             $stmt->execute([$order_id]);
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo json_encode(["code"=>200,"products"=>$result]);
-            exit;
+            $items = [];
+
+            foreach ($result as $item) {
+                /** @var array<string, string> $item */
+                $items[] = [
+                    'order_id' => (int)$item['order_id'],
+                    'order_status' => (string)$item['order_status'],
+                    'order_date' => (string)$item['order_date'],
+                    'total_price' => (float)$item['total_price'],
+                    'shipping_price' => (float)$item['shipping_price'],
+                    'item_id' => (int)$item['item_id'],
+                    'product_id' => (int)$item['product_id'],
+                    'item_quantity' => (int)$item['item_quantity'],
+                    'item_unit_price' => (float)$item['item_unit_price'],
+                    'product_name' => (string)$item['product_name'],
+                    'product_image' => (string)$item['product_image'],
+                ];
+            }
+            http_response_code(200);
+            echo json_encode(["code"=>200,"products"=>$items]);
+            return $items;
         } catch (PDOException | exceptionCustom $e) {
-            echo json_encode(["code"=>404,"message"=>"Erro ao obter o produto do pedido: " . $e->getMessage()]);
+            http_response_code(404);
+            echo json_encode(["code"=>$e->getCode(),"message"=>"Erro ao obter o produto do pedido: " . $e->getMessage()]);
             throw new exceptionCustom("Erro ao obter o produto: ", 404, $e);
         }
     }
@@ -300,9 +407,17 @@ class OrdersController
     /**
      * @throws exceptionCustom
      */
-    static function atualizarStatusPedidos():Json
+    static function atualizarStatusPedidos():void
     {
-        $data_orders = json_decode(filter_input(INPUT_POST,'orders'), true);
+//        $data_orders = json_decode(filter_input(INPUT_POST,'orders'), true);
+        $json = filter_input(INPUT_POST, 'orders');
+
+        if (!is_string($json)) {
+            echo json_encode(["code"=> 404, "message"=>"Dados ausentes ou inválidos"]);
+            exit;
+        }
+
+        $data_orders = json_decode($json, true);
 
         if (!is_array($data_orders)) {
             echo json_encode(["code"=> 404, "message"=>"Dados comprometidos"]);
@@ -311,7 +426,9 @@ class OrdersController
         $pedidos = [];
 
         foreach ($data_orders as $pedido) {
+            /** @var int $order_id */
             $order_id = filter_var($pedido['order_id'], FILTER_SANITIZE_NUMBER_INT);
+            /** @var string $status */
             $status = filter_var($pedido['status'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             if (!isset($pedidos[$status])) {

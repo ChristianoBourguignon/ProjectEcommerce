@@ -23,13 +23,14 @@ class ProductsController
 
     /**
      * @throws exceptionCustom
+     * @return array<int, array{id: int,name: string, price: float, image: string, quantity:int}>
      */
     public static function getProdutos(): array
     {
-        DbController::getConnection();
         try {
-            $pdo = DbController::getPdo();
-            $stmt = $pdo->prepare("
+            DbController::getConnection();
+
+            $stmt = DbController::getPdo()->prepare("
                 SELECT
                 p.id_products,
                 p.name,
@@ -62,11 +63,16 @@ class ProductsController
             throw new exceptionCustom("Erro ao criar o produto: ",404,new invalidArgumentsForProductsException("Sem acesso"));
         }
         DbController::getConnection();
-        /** @var string $prodName */
-        $prodNome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
-        $prodPreco = (float)filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?: '';
+
+        /** @var string $prodNome */
+        $prodNome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
+        $inputPreco = filter_input(INPUT_POST, 'preco', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $prodPreco = floatval(is_scalar($inputPreco) ? $inputPreco : 0.0);
         $prodEstoque = filter_input(INPUT_POST, 'estoque', FILTER_SANITIZE_NUMBER_INT) ?: '';
         try {
+            if($prodPreco == 0.0){
+                throw new invalidArgumentsForProductsException("Produto sem preço");
+            }
             $image = null;
 
             if (!is_dir(self::$uploadDir)) {
@@ -113,35 +119,37 @@ class ProductsController
      */
     public function excluirProduto(): void
     {
-        dbController::getConnection();
         $id = filter_input(INPUT_POST, 'product_id', FILTER_SANITIZE_NUMBER_INT);
 
         try {
-            $stmt = dbController::getPdo()->prepare("SELECT image FROM products WHERE id_products = :id");
+            DbController::getConnection();
+            $stmt = DbController::getPdo()->prepare("SELECT image FROM products WHERE id_products = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             /** @var array<string, array{image: string}> $prod */
             $prod = $stmt->fetch(PDO::FETCH_ASSOC);
             if (isset($prod['image'])) {
+                /** @var string $caminhoRelativo */
                 $caminhoRelativo = str_replace('/', DIRECTORY_SEPARATOR, $prod['image']);
-
-                /** @var string $caminhoAbsoluto */
                 $caminhoAbsoluto = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . $caminhoRelativo;
                 if (file_exists($caminhoAbsoluto)) {
                     unlink($caminhoAbsoluto);
                 }
             }
-            $stmt = dbController::getPdo()->prepare("DELETE FROM stock WHERE product_id = :id");
+            $stmt = DbController::getPdo()->prepare("DELETE FROM stock WHERE product_id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-            $stmt = dbController::getPdo()->prepare("DELETE FROM products WHERE id_products = :id");
+            $stmt = DbController::getPdo()->prepare("DELETE FROM products WHERE id_products = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
             http_response_code(200);
-            header("Location: /produtos");
+            Controller::view("products");
+            exit;
         } catch (PDOException $ex) {
-            new exceptionCustom("Erro ao deletar o produto: ", 404, $ex);
+            http_response_code($ex->getCode());
+            Controller::view("products");
+            throw new exceptionCustom("Erro ao deletar o produto: ", 404, $ex);
         }
     }
 }

@@ -17,7 +17,7 @@ class AuthController
         if(empty($usercpf) || empty($username) || empty($useremail)){
             throw new invalidParametersAuthException("Dados vazios não são permitidos. por favor refaça a operação.");
         }
-        if(strlen($usercpf) != 11 ){
+        if(is_string($usercpf) && strlen($usercpf) != 11 ){
             throw new invalidParametersAuthException("CPF não pode ser menor que 11 caracteres, por favor digite sem as pontuações.");
         }
         try {
@@ -25,20 +25,21 @@ class AuthController
                 session_start();
             }
             DbController::getConnection();
-            $stmt = dbController::getPdo()->prepare("SELECT cpf FROM users WHERE cpf = :cpf");
+            $stmt = DbController::getPdo()->prepare("SELECT cpf FROM users WHERE cpf = :cpf");
             $stmt->bindParam(':cpf', $usercpf, PDO::PARAM_INT);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if($user){
                 throw new invalidParametersAuthException("Já existe conta com esse CPF");
             }
-            $stmt = dbController::getPdo()->prepare("INSERT INTO users (name,email,cpf) VALUES (:name,:email,:cpf)");
+            $stmt = DbController::getPdo()->prepare("INSERT INTO users (name,email,cpf) VALUES (:name,:email,:cpf)");
             $stmt->bindParam(':name', $username);
             $stmt->bindParam(':email', $useremail);
             $stmt->bindParam(':cpf', $usercpf);
             $stmt->execute();
+            $userid = (int)DbController::getPdo()->lastInsertId();
             $_SESSION['username'] = $username;
-            $_SESSION['userid'] = (int)DbController::getPdo()->lastInsertId();
+            $_SESSION['userid'] = $userid;
             $this->setCookie("username",$_SESSION['username']);
             $this->setCookie("userid",$_SESSION['userid']);
             http_response_code(200);
@@ -52,9 +53,9 @@ class AuthController
      */
     public function logar(): void
     {
-        $usercpf = (int)filter_input(INPUT_POST, 'loginCpf', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? null;
+        $usercpf = filter_input(INPUT_POST, 'loginCpf', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? null;
 
-        if(!isset($usercpf)){
+        if(!is_string($usercpf) || empty($usercpf)){
             throw new invalidParametersAuthException("Erro ao obter o cpf");
         }
         try {
@@ -62,12 +63,13 @@ class AuthController
                 session_start();
             }
             DbController::getConnection();
-            $stmt = dbController::getPdo()->prepare("SELECT id_user,name FROM users WHERE cpf = :cpf");
+            $stmt = DbController::getPdo()->prepare("SELECT id_user,name FROM users WHERE cpf = :cpf");
             $stmt->bindParam(':cpf', $usercpf, PDO::PARAM_INT);
             $stmt->execute();
+            /** @var array{id_user:int , name:string} $user */
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if(!$user){
-                throw new invalidParametersAuthException("Não há uma conta atrelada a esse CPF.");
+            if ($user == null) {
+                throw new InvalidParametersAuthException("Não há uma conta atrelada a esse CPF.");
             }
             $_SESSION['username'] = $user['name'];
             $_SESSION['userid'] = $user['id_user'];
@@ -85,25 +87,23 @@ class AuthController
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        $_SESSION = [];
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
-                $params["path"], $params["domain"],
-                $params["secure"], $params["httponly"]
-            );
+        if (isset($_SESSION['username']) && is_string($_SESSION['username'])) {
+            $this->setCookie("username", $_SESSION['username'], 0);
         }
+        if (isset($_SESSION['userid']) && is_int($_SESSION['userid'])) {
+            $this->setCookie("userid", $_SESSION['userid'], 0);
+        }
+        $_SESSION = [];
         session_destroy();
-        setcookie("username", '', time() - 3600, "/");
-        header("location: /");
+        header("Location: /");
         exit;
     }
 
-    function setCookie(string $name, string $value, int $days = 30): void {
+    function setCookie(string $name, mixed $value, int $days = 30): void {
+        if (!(isset($value) && is_string($value))) { return;}
         setcookie($name, $value, [
             'expires' => time() + (86400 * $days),
             'path' => '/',
         ]);
     }
-
 }
