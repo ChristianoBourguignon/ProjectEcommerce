@@ -270,7 +270,7 @@ $this->layout("master", [
             <div class="col-md-3">
                 <div class="stat-card p-4">
                     <i class="bi bi-file-code display-4 text-primary mb-3"></i>
-                    <h3 class="fw-bold text-primary">7</h3>
+                    <h3 class="fw-bold text-primary">8</h3>
                     <p class="mb-0">Controllers</p>
                 </div>
             </div>
@@ -284,7 +284,7 @@ $this->layout("master", [
             <div class="col-md-3">
                 <div class="stat-card p-4">
                     <i class="bi bi-exclamation-triangle display-4 text-warning mb-3"></i>
-                    <h3 class="fw-bold text-warning">9</h3>
+                    <h3 class="fw-bold text-warning">11</h3>
                     <p class="mb-0">Exceções Customizadas</p>
                 </div>
             </div>
